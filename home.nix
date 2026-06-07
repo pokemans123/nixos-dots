@@ -33,6 +33,10 @@ in
     source = symlink "${dotfiles}/kitty/";
     recursive = true;
   };
+  xdg.configFile."fastfetch" = {
+    source = symlink "${dotfiles}/fastfetch/";
+    recursive = true;
+  };
   home.packages = with pkgs; [
     hyprland
     neovim
@@ -43,6 +47,16 @@ in
     nixpkgs-fmt
     nodejs
     cargo
+    thunar
+    (pkgs.writeShellApplication
+    {
+      name = "ns";
+      runtimeInputs = with pkgs; [
+        fzf
+        nix-search-tv
+      ];
+      text = builtins.readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
+    })
   ];
 
 
