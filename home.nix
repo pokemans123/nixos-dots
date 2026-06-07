@@ -37,6 +37,14 @@ in
     source = symlink "${dotfiles}/fastfetch/";
     recursive = true;
   };
+  xdg.configFile."i3" = {
+    source = symlink "${dotfiles}/i3/";
+    recursive = true;
+  };
+  xdg.configFile."oxwm" = {
+    source = symlink "${dotfiles}/oxwm/";
+    recursive = true;
+  };
   home.packages = with pkgs; [
     hyprland
     neovim

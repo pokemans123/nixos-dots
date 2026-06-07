@@ -8,20 +8,15 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./modules/uefi-default.nix
     ];
 
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.systemd-boot.configurationLimit = 4;
-
-  # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "qazniak"; # Define your hostname.
 
   # Configure network connections interactively with nmcli or nmtui.
   networking.networkmanager.enable = true;
+  services.openssh.enable = true;
 
   # Set your time zone.
   time.timeZone = "America/New_York";
@@ -29,6 +24,14 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
+
+  services.xserver = {
+   enable = true;
+   autoRepeatDelay = 200;
+   autoRepeatInterval = 35;
+   windowManager.oxwm.enable = true;
+   windowManager.i3.enable = true;
+  };
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
