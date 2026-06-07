@@ -16,6 +16,7 @@ in
       btw = "echo I use nixos, btw";
       nrs = "sudo nixos-rebuild switch --flake ~/nixos-dots#qazniak";
     };
+    initExtra = "fastfetch -c /home/pranav/.config/fastfetch/config13.jsonc";
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
@@ -57,14 +58,14 @@ in
     cargo
     thunar
     (pkgs.writeShellApplication
-    {
-      name = "ns";
-      runtimeInputs = with pkgs; [
-        fzf
-        nix-search-tv
-      ];
-      text = builtins.readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
-    })
+      {
+        name = "ns";
+        runtimeInputs = with pkgs; [
+          fzf
+          nix-search-tv
+        ];
+        text = builtins.readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
+      })
   ];
 
 
