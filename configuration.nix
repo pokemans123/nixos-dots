@@ -7,8 +7,8 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./hosts/qazniak.nix
+      ./hosts/qazniak/hardware-configuration.nix
+      ./hosts/qazniak/qazniak.nix
     ];
 
 
