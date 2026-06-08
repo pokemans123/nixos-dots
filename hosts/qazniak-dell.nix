@@ -12,6 +12,6 @@
       configurationLimit = 4;
    };
 
-  boot.kernelPackages = pkgs.linuxPackages_lts;
-
+  boot.kernelPackages = pkgs.linuxPackages;
+  networking.hostName = "qazniak-dell"; # Define your hostname.
 }

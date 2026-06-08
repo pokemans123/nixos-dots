@@ -8,11 +8,10 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./modules/uefi-default.nix
+      ./hosts/qazniak.nix
     ];
 
 
-  networking.hostName = "qazniak"; # Define your hostname.
 
   # Configure network connections interactively with nmcli or nmtui.
   networking.networkmanager.enable = true;
