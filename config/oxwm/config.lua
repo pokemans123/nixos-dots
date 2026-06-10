@@ -42,11 +42,11 @@ local colors = {
 }
 
 -- Workspace tags - can be numbers, names, or icons (requires a Nerd Font)
-local tags = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }
--- local tags = { "", "󰊯", "", "", "󰙯", "󱇤", "", "󱘶", "󰧮" } -- Example of nerd font icon tags
+-- local tags = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }
+local tags = { "", "󰊯", "", "", "󰙯", "󱇤", "", "󱘶", "󰧮" } -- Example of nerd font icon tags
 
 -- Font for the status bar (use "fc-list" to see available fonts)
-local bar_font = "monospace:style=Bold:size=10"
+local bar_font = "JetBrainsMonoNerdFont:style=Bold:size=10"
 
 -- Define your blocks
 -- Similar to widgets in qtile, or dwmblocks
@@ -164,7 +164,7 @@ oxwm.gaps.set_outer(5, 5)
 oxwm.rule.add({ instance = "gimp", floating = true })
 -- oxwm.rule.add({ class = "Alacritty", tag = 9, focus = true })
 -- oxwm.rule.add({ class = "firefox", title = "Library", floating = true })
--- oxwm.rule.add({ class = "firefox", tag = 2 })
+oxwm.rule.add({ class = "firefox", tag = 2, focus = true })
 -- oxwm.rule.add({ instance = "mpv", floating = true })
 
 -- To find window properties, use xprop and click on the window
@@ -227,6 +227,9 @@ oxwm.key.bind({ modkey, "Shift" }, "Space", oxwm.client.toggle_floating())
 -- Layout management
 oxwm.key.bind({ modkey }, "F", oxwm.layout.set("normie"))
 oxwm.key.bind({ modkey }, "C", oxwm.layout.set("tiling"))
+
+oxwm.key.bind({ modkey }, "B", oxwm.spawn("firefox"))
+oxwm.key.bind({ modkey }, "E", oxwm.spawn("thunar"))
 -- Cycle through layouts
 oxwm.key.bind({ modkey }, "N", oxwm.layout.cycle())
 
@@ -331,7 +334,7 @@ oxwm.key.chord({
 -- Commands to run once when OXWM starts
 -- Uncomment and modify these examples, or add your own
 
--- oxwm.autostart("picom")
+oxwm.autostart("picom")
 -- oxwm.autostart("feh --bg-scale ~/wallpaper.jpg")
 -- oxwm.autostart("dunst")
--- oxwm.autostart("nm-applet")
+oxwm.autostart("nm-applet")

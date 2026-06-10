@@ -10,7 +10,6 @@
 
 
 	};
-s
 	outputs = { self, nixpkgs, home-manager, ...}: {
 		nixosConfigurations.qazniak = nixpkgs.lib.nixosSystem {
 			

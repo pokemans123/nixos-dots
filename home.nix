@@ -14,11 +14,16 @@ in
     enable = true;
     shellAliases = {
       btw = "echo I use nixos, btw";
-      nrs = "sudo nixos-rebuild switch --flake ~/nixos-dots#qazniak";
     };
-    initExtra = "fastfetch -c /home/pranav/.config/fastfetch/config13.jsonc";
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
+    initContent = ''
+      nrs() {
+	 sudo nixos-rebuild switch --flake ~/nixos-dots#"$1"
+      }
+      fastfetch -c ~/.config/fastfetch/config13.jsonc
+
+    '';
 
   };
   xdg.configFile."hypr" = {
@@ -57,6 +62,8 @@ in
     nodejs
     cargo
     thunar
+    nwg-look
+    stylua
     (pkgs.writeShellApplication
       {
         name = "ns";
