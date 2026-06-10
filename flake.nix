@@ -10,13 +10,15 @@
 
 
 	};
-
+s
 	outputs = { self, nixpkgs, home-manager, ...}: {
 		nixosConfigurations.qazniak = nixpkgs.lib.nixosSystem {
 			
 			system = "x86_64-linux";
 			modules = [ 
-				./hosts/qazniak/configuration.nix
+				./configuration.nix
+				./hosts/qazniak/hardware-configuration.nix
+				./hosts/qazniak/qazniak.nix
 				home-manager.nixosModules.home-manager {
 					home-manager = {
 						useGlobalPkgs = true;
@@ -41,7 +43,9 @@
 			
 			system = "x86_64-linux";
 			modules = [ 
-				./hosts/qazniak-dell/configuration.nix
+				./configuration.nix
+				./hosts/qazniak-dell/hardware-configuration.nix
+				./hosts/qazniak-dell/qazniak-dell.nix
 				home-manager.nixosModules.home-manager {
 					home-manager = {
 						useGlobalPkgs = true;

@@ -5,11 +5,6 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hosts/qazniak/hardware-configuration.nix
-      ./hosts/qazniak/qazniak.nix
-    ];
 
 
 
