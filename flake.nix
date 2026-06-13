@@ -8,12 +8,26 @@
 
 		};
 
+		zen-browser = {
+		  url = "github:youwen5/zen-browser-flake";
+		  inputs.nixpkgs.follows = "nixpkgs";
+		};
+
+		noctalia = {
+		  url = "github:noctalia-dev/noctalia";
+		  inputs.nixpkgs.follows = "nixpkgs";
+		};
 
 	};
-	outputs = { self, nixpkgs, home-manager, ...}: {
+	outputs = inputs@{ self, nixpkgs, home-manager, ...}: {
 		nixosConfigurations.qazniak = nixpkgs.lib.nixosSystem {
 			
 			system = "x86_64-linux";
+
+			specialArgs = {
+			   inherit inputs;
+			};
+
 			modules = [ 
 				./configuration.nix
 				./hosts/qazniak/hardware-configuration.nix
@@ -23,24 +37,22 @@
 						useGlobalPkgs = true;
 						useUserPackages = true;
 						users.pranav = import ./home.nix;	
+						extraSpecialArgs = {
+						   inherit inputs; 
+						};
+
 						backupFileExtension = "backup";
-
-
 					};
-
-
 				}
-
-
 			];
-
-
-
 		};
 
 		nixosConfigurations.qazniak-dell = nixpkgs.lib.nixosSystem {
 			
 			system = "x86_64-linux";
+			specialArgs = {
+			   inherit inputs;
+			};
 			modules = [ 
 				./configuration.nix
 				./hosts/qazniak-dell/hardware-configuration.nix
@@ -50,21 +62,15 @@
 						useGlobalPkgs = true;
 						useUserPackages = true;
 						users.pranav = import ./home.nix;	
+						extraSpecialArgs = {
+						   inherit inputs; 
+						};
 						backupFileExtension = "backup";
 
 
 					};
-
-
 				}
-
-
 			];
-
-
-
 		};
 	};
-
-
 }

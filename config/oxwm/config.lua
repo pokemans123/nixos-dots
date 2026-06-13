@@ -250,7 +250,7 @@ oxwm.key.bind({ modkey }, "A", oxwm.toggle_gaps())
 oxwm.key.bind({ modkey }, "B", oxwm.toggle_bar())
 
 -- Window manager controls
-oxwm.key.bind({ modkey, "Shift" }, "Q", oxwm.quit())
+oxwm.key.bind({ modkey }, "M", oxwm.quit())
 oxwm.key.bind({ modkey, "Shift" }, "R", oxwm.restart())
 
 -- Focus movement [1 for up in the stack, -1 for down]

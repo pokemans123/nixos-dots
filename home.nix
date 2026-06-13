@@ -10,6 +10,12 @@ in
   home.homeDirectory = "/home/pranav";
   programs.git.enable = true;
   home.stateVersion = "26.05";
+  services.polkit-gnome.enable = true;
+  services.udiskie = {
+    enable = true;
+    automount = true;
+    notify = true;
+  };
   programs.zsh = {
     enable = true;
     shellAliases = {
@@ -18,10 +24,10 @@ in
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     initContent = ''
-      nrs() {
-	 sudo nixos-rebuild switch --flake ~/nixos-dots#"$1"
-      }
-      fastfetch -c ~/.config/fastfetch/config13.jsonc
+            nrs() {
+      	 sudo nixos-rebuild switch --flake ~/nixos-dots#"$1"
+            }
+            fastfetch -c ~/.config/fastfetch/config13.jsonc
 
     '';
 
@@ -31,6 +37,10 @@ in
     recursive = true;
   };
 
+  xdg.configFile."niri" = {
+    source = symlink "${dotfiles}/niri/";
+    recursive = true;
+  };
   xdg.configFile."nvim" = {
     source = symlink "${dotfiles}/nvim/";
     recursive = true;
@@ -53,7 +63,9 @@ in
   };
   home.packages = with pkgs; [
     hyprland
+    niri
     neovim
+    xournalpp
     ripgrep
     gcc
     fastfetch
@@ -61,9 +73,19 @@ in
     nixpkgs-fmt
     nodejs
     cargo
+    keepassxc
+    rofi
     thunar
+    (import ./config/screenshot.nix { inherit pkgs; })
+    thunar-volman
     nwg-look
     stylua
+    candy-icons
+    ryubing
+    alejandra
+    pywalfox-native
+    gparted
+    adw-gtk3
     (pkgs.writeShellApplication
       {
         name = "ns";
