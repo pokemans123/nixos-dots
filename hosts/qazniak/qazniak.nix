@@ -7,4 +7,5 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
   networking.hostName = "qazniak"; # Define your hostname.
+  boot.resumeDevice = "/dev/nvme0n1p4";
 }

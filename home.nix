@@ -32,6 +32,14 @@ in
     '';
 
   };
+  programs.vesktop = {
+    enable = true;
+    settings = {
+      tray = true;
+      minimzeToTray = true;
+    };
+  };
+
   xdg.configFile."hypr" = {
     source = symlink "${dotfiles}/hypr/";
     recursive = true;
@@ -84,7 +92,10 @@ in
     ryubing
     alejandra
     pywalfox-native
+    tor-browser
     gparted
+    _7zip-zstd
+    yazi
     adw-gtk3
     (pkgs.writeShellApplication
       {
@@ -96,7 +107,6 @@ in
         text = builtins.readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
       })
   ];
-
 
 
 }

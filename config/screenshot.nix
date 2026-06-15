@@ -1,10 +1,10 @@
 { pkgs }:
 
-pkgs.writeShellScriptsBin "screenshot" ''
+pkgs.writeShellScriptBin "screenshot" ''
    DIR="$HOME/Pictures/Screenshots"
    mkdir -p "$DIR"
-   TEMP="/tmp/screenshot-$(date '+%Y%m%d-%H%M%S').png
-   FILE="$DIR/$(date +'+%Y%m%d-%H%M%S').png"
+   TEMP="/tmp/screenshot-$(date '+%Y%m%d-%H%M%S').png"
+   FILE="$DIR/$(date '+%Y%m%d-%H%M%S').png"
 
    ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" "$TEMP"
 

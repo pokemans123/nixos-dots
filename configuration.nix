@@ -76,16 +76,17 @@
     shell = pkgs.zsh;
     packages = with pkgs; [
       tree
-      wine
-      wine64
     ];
   };
 
-   services.gvfs.enable = true;
+  services.gvfs.enable = true;
   programs.firefox.enable = true;
   programs.zsh.enable = true;
   programs.hyprland.enable = true;
-  programs.niri.enable = true;
+
+  programs.niri = {
+    enable = true;
+  };
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
@@ -93,12 +94,15 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     neovim
     git
+    xwayland-satellite
     ntfs3g
     wget
     kitty
     bluez
     bluez-tools
     gvfs
+    wine64
+    winetricks
     playerctl
     brightnessctl
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
@@ -108,7 +112,7 @@
     nerd-fonts.jetbrains-mono
     nerd-fonts.intone-mono
     redhat-official-fonts
-    
+
   ];
 
   system.stateVersion = "26.05"; # Did you read the comment?
