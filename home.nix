@@ -93,6 +93,7 @@ in
     alejandra
     pywalfox-native
     tor-browser
+    android-studio
     gparted
     _7zip-zstd
     yazi

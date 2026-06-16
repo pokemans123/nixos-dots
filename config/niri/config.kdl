@@ -331,11 +331,14 @@ window-rule {
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     match app-id="satty"
+    match app-id="dev.noctalia.Noctalia.Settings"
     open-floating true
 }
 
 window-rule {
    match app-id="zen"
+   match app-id="vesktop"
+   match app-id="balatro.exe"
    open-maximized true
 }
 
@@ -593,6 +596,8 @@ binds {
     // Center all fully visible columns on screen.
     Mod+Ctrl+C { center-visible-columns; }
 
+    Mod+S { spawn-sh "noctalia msg settings-toggle"; }
+
     // Finer width adjustments.
     // This command can also:
     // * set width in pixels: "1000"
@@ -647,4 +652,10 @@ binds {
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
+}
+
+gestures {
+   hot-corners {
+      bottom-left
+   }
 }
