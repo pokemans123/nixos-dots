@@ -223,8 +223,8 @@ oxwm.key.bind({ modkey }, "N", oxwm.layout.cycle())
 -- Master area controls (tiling layout)
 
 -- Decrease/Increase master area width
-oxwm.key.bind({ modkey }, "H", oxwm.set_master_factor(-5))
-oxwm.key.bind({ modkey }, "L", oxwm.set_master_factor(5))
+oxwm.key.bind({ modkey, "Shift" }, "H", oxwm.set_master_factor(-5))
+oxwm.key.bind({ modkey, "Shift" }, "L", oxwm.set_master_factor(5))
 -- Enable tiled resize mode: Mod+RMB drag adjusts mfact instead of floating
 -- oxwm.tiled_resize_mode(true)
 -- Increment/Decrement number of master windows
@@ -243,6 +243,7 @@ oxwm.key.bind({ modkey, "Shift" }, "R", oxwm.restart())
 -- Focus movement [1 for up in the stack, -1 for down]
 oxwm.key.bind({ modkey }, "J", oxwm.client.focus_stack(1))
 oxwm.key.bind({ modkey }, "K", oxwm.client.focus_stack(-1))
+oxwm.key.bind({ modkey }, "H", oxwm.client.focus_stack(-1))
 
 -- Window movement (swap position in stack)
 oxwm.key.bind({ modkey, "Shift" }, "J", oxwm.client.move_stack(1))

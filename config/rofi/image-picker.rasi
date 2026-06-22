@@ -1,0 +1,28 @@
+@theme '~/.config/rofi/themes/sane.rasi'
+/*****----- Configuration -----*****/
+configuration {
+	modi:                       "drun";
+    show-icons:                 true;
+    display-drun:               " Apps";
+	drun-display-format:        "{name}";
+}
+
+window {
+     width:		90%;
+}
+
+listview {
+     enabled:		true;
+     columns:		3;
+     cycle:		true;
+     layout:		horizontal;
+}
+
+element {
+     enabled:		true;
+     spacing:		5px;
+}
+
+element-icon {
+     size:		300px;
+}

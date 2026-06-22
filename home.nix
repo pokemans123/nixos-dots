@@ -4,13 +4,15 @@ let
   dotfiles = "${config.home.homeDirectory}/nixos-dots/config";
 in
 
-
 {
+  imports = [
+    ./modules/filebrowser.nix
+  ];
   home.username = "pranav";
   home.homeDirectory = "/home/pranav";
   programs.git.enable = true;
   home.stateVersion = "26.05";
-  services.polkit-gnome.enable = true;
+  # services.polkit-gnome.enable = true;
   services.udiskie = {
     enable = true;
     automount = true;
@@ -18,8 +20,18 @@ in
   };
   programs.zsh = {
     enable = true;
+    oh-my-zsh = {
+      enable = true;
+      plugins = [
+        "git"
+        "z"
+      ];
+      theme = "minimal";
+    };
     shellAliases = {
       btw = "echo I use nixos, btw";
+      ls = "lsd";
+      xd = "XD";
     };
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
@@ -32,6 +44,25 @@ in
     '';
 
   };
+  programs.java = {
+    enable = true;
+    package = pkgs.jdk25;
+  };
+  programs.onlyoffice = {
+    enable = true;
+    settings = {
+      UITheme = "theme-contrast-dark";
+      titlebar = "custom";
+      maximized = false;
+    };
+  };
+  programs.freetube = {
+    enable = true;
+    settings = {
+      baseTheme = "catppuccinMocha";
+    };
+  };
+
   programs.vesktop = {
     enable = true;
     settings = {
@@ -42,6 +73,11 @@ in
 
   xdg.configFile."hypr" = {
     source = symlink "${dotfiles}/hypr/";
+    recursive = true;
+  };
+
+  xdg.configFile."rofi" = {
+    source = symlink "${dotfiles}/rofi/";
     recursive = true;
   };
 
@@ -69,6 +105,10 @@ in
     source = symlink "${dotfiles}/oxwm/";
     recursive = true;
   };
+  xdg.configFile."tmux" = {
+    source = symlink "${dotfiles}/tmux/";
+    recursive = true;
+  };
   home.packages = with pkgs; [
     hyprland
     niri
@@ -83,9 +123,6 @@ in
     cargo
     keepassxc
     rofi
-    thunar
-    (import ./config/screenshot.nix { inherit pkgs; })
-    thunar-volman
     nwg-look
     stylua
     candy-icons
@@ -93,21 +130,25 @@ in
     alejandra
     pywalfox-native
     tor-browser
-    android-studio
     gparted
     _7zip-zstd
     yazi
     adw-gtk3
-    (pkgs.writeShellApplication
-      {
-        name = "ns";
-        runtimeInputs = with pkgs; [
-          fzf
-          nix-search-tv
-        ];
-        text = builtins.readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
-      })
+    lsd
+    bat
+    gtk2
+    thunderbird
+    vscodium
+    tmux
+    localsend
+    zed-editor
+    (pkgs.writeShellApplication {
+      name = "ns";
+      runtimeInputs = with pkgs; [
+        fzf
+        nix-search-tv
+      ];
+      text = builtins.readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
+    })
   ];
-
-
 }

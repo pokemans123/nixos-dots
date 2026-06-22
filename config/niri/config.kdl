@@ -339,6 +339,8 @@ window-rule {
    match app-id="zen"
    match app-id="vesktop"
    match app-id="balatro.exe"
+   match app-id="codium"
+   match app-id="dev.zed.Zed"
    open-maximized true
 }
 

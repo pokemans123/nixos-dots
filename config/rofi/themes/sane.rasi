@@ -1,0 +1,74 @@
+@import '~/.config/rofi/themes/colors.rasi'
+* {
+    bg: #000000;
+    fg: #c0caf5;
+    selected-bg: #13131c;
+    selected-fg: @primary;
+    border-color: #13131c;
+    
+    background-color: transparent;
+    text-color: @fg;
+}
+
+window {
+    background-color: @bg;
+    border: 1px;
+    border-color: @border-color;
+    border-radius: 12px;
+    width: 555px;
+    padding: 10px;
+}
+
+mainbox {
+    background-color: transparent;
+    children: [inputbar, listview];
+    spacing: 8px;
+}
+
+inputbar {
+    background-color: #13131c;
+    border-radius: 8px;
+    padding: 8px 12px;
+    children: [prompt, entry];
+    vertical-align: 0.5;
+}
+
+prompt {
+    enabled: true;
+    background-color: transparent;
+    text-color: #2a96ae;
+    border-radius: 16px;
+    border: 2px;
+    border-color: #2a96ae;
+    padding: 5px;
+    margin: 0 6px 0 0;
+    vertical-align: 0.5;
+}
+
+entry {
+    placeholder: "Search ...";
+    placeholder-color: #6b6d8a;
+    vertical-align: 0.5;
+}
+
+listview {
+    background-color: transparent;
+    lines: 9;
+    spacing: 2px;
+}
+
+element {
+    background-color: transparent;
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+
+element selected {
+    background-color: @selected-bg;
+    text-color: @selected-fg;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+}
