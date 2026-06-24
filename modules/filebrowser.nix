@@ -1,4 +1,4 @@
-#contains filebrowser
+#contains filebrowsers, media players, image viewers, etc.
 {
   pkgs,
   ...
@@ -6,6 +6,7 @@
 {
   home.packages = with pkgs; [
     thunar
+    nautilus
     thunar-volman
     file-roller
     ffmpeg
@@ -15,5 +16,9 @@
     thunar-vcs-plugin
     unzip
     unzrip
+    shotwell
+    mpv
+    feh
+    mpvScripts.manga-reader
   ];
 }

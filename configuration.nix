@@ -2,23 +2,28 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, inputs, lib, pkgs, ... }:
+{
+  config,
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-
-
 
   # Configure network connections interactively with nmcli or nmtui.
   networking.networkmanager.enable = true;
   services.openssh.enable = true;
+  services.gnome.gnome-keyring.enable = lib.mkForce false;
 
   # Set your time zone.
   time.timeZone = "America/New_York";
 
-
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
+  services.tumbler.enable = true;
   services.keyd = {
     enable = true;
     keyboards.default = {
@@ -53,13 +58,14 @@
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   services.displayManager.ly.enable = true;
 
   services.power-profiles-daemon.enable = true;
   services.udisks2.enable = true;
-
-
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -84,7 +90,14 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.pranav = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "networkmanager" "video" "storage" "lpadmin" ];
+    extraGroups = [
+      "wheel"
+      "audio"
+      "networkmanager"
+      "video"
+      "storage"
+      "lpadmin"
+    ];
     shell = pkgs.zsh;
     packages = with pkgs; [
       tree
@@ -99,8 +112,8 @@
   programs.hyprland.enable = true;
 
   programs.niri = {
-    package = pkgs.niri;
     enable = true;
+    package = inputs.niri-nix.packages.${pkgs.stdenv.hostPlatform.system}.niri;
   };
 
   services.i2pd = {
@@ -123,6 +136,7 @@
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
+    (import ./config/screenshot.nix { inherit pkgs; })
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     neovim
     nixd
@@ -139,6 +153,7 @@
     xd
     winetricks
     playerctl
+    tumbler
     brightnessctl
     pkgs.android-studio
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
@@ -158,4 +173,3 @@
   system.stateVersion = "26.05"; # Did you read the comment?
 
 }
-

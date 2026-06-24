@@ -216,7 +216,7 @@ oxwm.key.bind({ modkey }, "F", oxwm.layout.set("normie"))
 oxwm.key.bind({ modkey }, "C", oxwm.layout.set("tiling"))
 
 oxwm.key.bind({ modkey }, "B", oxwm.spawn("firefox"))
-oxwm.key.bind({ modkey }, "E", oxwm.spawn("thunar"))
+oxwm.key.bind({ modkey }, "E", oxwm.spawn("nautilus"))
 -- Cycle through layouts
 oxwm.key.bind({ modkey }, "N", oxwm.layout.cycle())
 
@@ -323,6 +323,6 @@ oxwm.key.chord({
 -- Uncomment and modify these examples, or add your own
 
 oxwm.autostart("picom")
--- oxwm.autostart("feh --bg-scale ~/wallpaper.jpg")
+oxwm.autostart("feh --bg-scale ~/Pictures/wallpapers/wall1.jpg")
 -- oxwm.autostart("dunst")
 oxwm.autostart("nm-applet")

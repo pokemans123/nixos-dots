@@ -7,6 +7,7 @@ in
 {
   imports = [
     ./modules/filebrowser.nix
+    ./modules/programming.nix
   ];
   home.username = "pranav";
   home.homeDirectory = "/home/pranav";
@@ -44,9 +45,17 @@ in
     '';
 
   };
-  programs.java = {
+  programs.keepassxc = {
     enable = true;
-    package = pkgs.jdk25;
+    settings = {
+      FdoSecrets.Enabled = true;
+      Browser = {
+        Enabled = true;
+        AlwaysAllowAccess = true;
+        AlwaysAllowUpdate = true;
+        HttpAuthPermission = true;
+      };
+    };
   };
   programs.onlyoffice = {
     enable = true;
@@ -121,7 +130,6 @@ in
     nixpkgs-fmt
     nodejs
     cargo
-    keepassxc
     rofi
     nwg-look
     stylua
@@ -137,11 +145,12 @@ in
     lsd
     bat
     gtk2
-    thunderbird
     vscodium
     tmux
     localsend
     zed-editor
+    gocryptfs
+    mailspring
     (pkgs.writeShellApplication {
       name = "ns";
       runtimeInputs = with pkgs; [
