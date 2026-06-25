@@ -43,7 +43,7 @@ local colors = {
 
 -- Workspace tags - can be numbers, names, or icons (requires a Nerd Font)
 -- local tags = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }
-local tags = { "", "󰊯", "", "", "󰙯", "󱇤", "", "󱘶", "󰧮" } -- Example of nerd font icon tags
+local tags = { "","", "󰊯",  "", "󰙯", "󱇤", "", "󱘶", "󰧮" } -- Example of nerd font icon tags
 
 -- Font for the status bar (use "fc-list" to see available fonts)
 local bar_font = "JetBrainsMonoNerdFont:style=Bold:size=10"
@@ -151,7 +151,7 @@ oxwm.gaps.set_outer(5, 5)
 oxwm.rule.add({ instance = "gimp", floating = true })
 -- oxwm.rule.add({ class = "Alacritty", tag = 9, focus = true })
 -- oxwm.rule.add({ class = "firefox", title = "Library", floating = true })
-oxwm.rule.add({ class = "firefox", tag = 2, focus = true })
+oxwm.rule.add({ class = "zen", tag = 2, focus = true })
 -- oxwm.rule.add({ instance = "mpv", floating = true })
 
 -- To find window properties, use xprop and click on the window
@@ -199,9 +199,9 @@ oxwm.bar.set_scheme_urgent(colors.red, colors.bg, colors.red)
 
 oxwm.key.bind({ modkey }, "Return", oxwm.spawn_terminal())
 -- Launch Dmenu
-oxwm.key.bind({ modkey }, "D", oxwm.spawn({ "sh", "-c", "rofi -show drun" }))
+oxwm.key.bind({ "Mod1" }, "Space", oxwm.spawn({ "sh", "-c", "rofi -show drun" }))
 -- Copy screenshot to clipboard
-oxwm.key.bind({ modkey }, "S", oxwm.spawn({ "sh", "-c", "maim -s | xclip -selection clipboard -t image/png" }))
+oxwm.key.bind({ modkey, "Shift" }, "S", oxwm.spawn({ "sh", "-c", "maim -s | xclip -selection clipboard -t image/png" }))
 oxwm.key.bind({ modkey }, "Q", oxwm.client.kill())
 
 -- Keybind overlay - Shows important keybindings on screen
@@ -215,7 +215,7 @@ oxwm.key.bind({ modkey, "Shift" }, "Space", oxwm.client.toggle_floating())
 oxwm.key.bind({ modkey }, "F", oxwm.layout.set("normie"))
 oxwm.key.bind({ modkey }, "C", oxwm.layout.set("tiling"))
 
-oxwm.key.bind({ modkey }, "B", oxwm.spawn("firefox"))
+oxwm.key.bind({ modkey }, "B", oxwm.spawn("zen"))
 oxwm.key.bind({ modkey }, "E", oxwm.spawn("nautilus"))
 -- Cycle through layouts
 oxwm.key.bind({ modkey }, "N", oxwm.layout.cycle())
@@ -243,7 +243,6 @@ oxwm.key.bind({ modkey, "Shift" }, "R", oxwm.restart())
 -- Focus movement [1 for up in the stack, -1 for down]
 oxwm.key.bind({ modkey }, "J", oxwm.client.focus_stack(1))
 oxwm.key.bind({ modkey }, "K", oxwm.client.focus_stack(-1))
-oxwm.key.bind({ modkey }, "H", oxwm.client.focus_stack(-1))
 
 -- Window movement (swap position in stack)
 oxwm.key.bind({ modkey, "Shift" }, "J", oxwm.client.move_stack(1))
@@ -271,15 +270,15 @@ oxwm.key.bind({ modkey }, "8", oxwm.tag.view(7))
 oxwm.key.bind({ modkey }, "9", oxwm.tag.view(8))
 
 -- Move focused window to workspace N
-oxwm.key.bind({ modkey, "Shift" }, "1", oxwm.tag.move_to(0))
-oxwm.key.bind({ modkey, "Shift" }, "2", oxwm.tag.move_to(1))
-oxwm.key.bind({ modkey, "Shift" }, "3", oxwm.tag.move_to(2))
-oxwm.key.bind({ modkey, "Shift" }, "4", oxwm.tag.move_to(3))
-oxwm.key.bind({ modkey, "Shift" }, "5", oxwm.tag.move_to(4))
-oxwm.key.bind({ modkey, "Shift" }, "6", oxwm.tag.move_to(5))
-oxwm.key.bind({ modkey, "Shift" }, "7", oxwm.tag.move_to(6))
-oxwm.key.bind({ modkey, "Shift" }, "8", oxwm.tag.move_to(7))
-oxwm.key.bind({ modkey, "Shift" }, "9", oxwm.tag.move_to(8))
+oxwm.key.bind({ modkey, "Mod1" }, "1", oxwm.tag.move_to(0))
+oxwm.key.bind({ modkey, "Mod1" }, "2", oxwm.tag.move_to(1))
+oxwm.key.bind({ modkey, "Mod1" }, "3", oxwm.tag.move_to(2))
+oxwm.key.bind({ modkey, "Mod1" }, "4", oxwm.tag.move_to(3))
+oxwm.key.bind({ modkey, "Mod1" }, "5", oxwm.tag.move_to(4))
+oxwm.key.bind({ modkey, "Mod1" }, "6", oxwm.tag.move_to(5))
+oxwm.key.bind({ modkey, "Mod1" }, "7", oxwm.tag.move_to(6))
+oxwm.key.bind({ modkey, "Mod1" }, "8", oxwm.tag.move_to(7))
+oxwm.key.bind({ modkey, "Mod1" }, "9", oxwm.tag.move_to(8))
 
 -- Combo view (view multiple tags at once) {argos_nothing}
 -- Example: Mod+Ctrl+2 while on tag 1 will show BOTH tags 1 and 2
@@ -323,6 +322,5 @@ oxwm.key.chord({
 -- Uncomment and modify these examples, or add your own
 
 oxwm.autostart("picom")
-oxwm.autostart("feh --bg-scale ~/Pictures/wallpapers/wall1.jpg")
 -- oxwm.autostart("dunst")
 oxwm.autostart("nm-applet")

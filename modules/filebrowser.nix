@@ -4,6 +4,11 @@
   ...
 }:
 {
+  services.picom = {
+   enable = true;
+   activeOpacity = 0.90;
+   inactiveOpacity = 0.80;
+  };
   home.packages = with pkgs; [
     thunar
     nautilus
@@ -18,7 +23,9 @@
     unzrip
     shotwell
     mpv
-    feh
+    xwallpaper
+    xclip
+    maim
     mpvScripts.manga-reader
   ];
 }

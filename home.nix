@@ -8,6 +8,7 @@ in
   imports = [
     ./modules/filebrowser.nix
     ./modules/programming.nix
+    ./modules/entertainment.nix
   ];
   home.username = "pranav";
   home.homeDirectory = "/home/pranav";
@@ -65,20 +66,7 @@ in
       maximized = false;
     };
   };
-  programs.freetube = {
-    enable = true;
-    settings = {
-      baseTheme = "catppuccinMocha";
-    };
-  };
 
-  programs.vesktop = {
-    enable = true;
-    settings = {
-      tray = true;
-      minimzeToTray = true;
-    };
-  };
 
   xdg.configFile."hypr" = {
     source = symlink "${dotfiles}/hypr/";
@@ -119,23 +107,12 @@ in
     recursive = true;
   };
   home.packages = with pkgs; [
-    hyprland
-    niri
     neovim
     xournalpp
-    ripgrep
-    gcc
     fastfetch
-    nil
-    nixpkgs-fmt
-    nodejs
-    cargo
     rofi
     nwg-look
-    stylua
     candy-icons
-    ryubing
-    alejandra
     pywalfox-native
     tor-browser
     gparted
@@ -145,10 +122,7 @@ in
     lsd
     bat
     gtk2
-    vscodium
-    tmux
     localsend
-    zed-editor
     gocryptfs
     mailspring
     (pkgs.writeShellApplication {
