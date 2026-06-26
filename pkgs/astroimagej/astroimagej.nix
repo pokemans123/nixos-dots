@@ -9,10 +9,10 @@ let
     };
     #   nix-prefetch-url --type sha256 <url>
     #   nix hash to-sri --type sha256 <result>
-    # aarch64-linux = {
-    #   url = "https://github.com/astroimagej/astroimagej/releases/download/6.0.9.00/AstroImageJ-6.0.9.00-linux-aarch64.tgz";
-    #   hash = "sha256-FIXME=";
-    # };
+    aarch64-linux = {
+      url = "https://github.com/astroimagej/astroimagej/releases/download/6.0.9.00/AstroImageJ-6.0.9.00-linux-aarch64.tgz";
+      hash = "sha256-YGekaKBsY26kXYrncnkCPaoyQpio8mktoG9WRzI3PNk=";
+    };
   };
   source = sources.${stdenv.hostPlatform.system}
     or (throw "Unsupported platform: ${stdenv.hostPlatform.system}");

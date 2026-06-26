@@ -35,6 +35,13 @@
       home-manager,
       ...
     }:
+
+  let
+  
+  overlay = final: prev: {
+  astroimagej = final.callPackage ./pkgs/astroimagej/astroimagej.nix { };
+      };
+   in
     {
       nixosConfigurations.qazniak = nixpkgs.lib.nixosSystem {
 
@@ -61,6 +68,9 @@
               backupFileExtension = "backup";
             };
           }
+	  {
+	    nixpkgs.overlays = [ overlay ];
+	  }
         ];
       };
 
