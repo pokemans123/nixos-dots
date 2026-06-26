@@ -13,6 +13,7 @@
     gcc
     nil
     stylua
+    lua-language-server
     tmux
     vscodium
     zed-editor

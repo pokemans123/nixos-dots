@@ -41,7 +41,7 @@
     autoRepeatDelay = 200;
     autoRepeatInterval = 35;
     windowManager.oxwm.enable = true;
-    windowManager.i3.enable = true;
+    desktopManager.xfce.enable = true;
   };
   services.flatpak.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
@@ -72,6 +72,10 @@
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
   # Enable CUPS to print documents.
+  services.avahi = {
+   enable = true;
+   nssmdns4 = true;
+  };
   services.printing.enable = true;
   hardware.bluetooth.enable = true;
   services.upower.enable = true;

@@ -107,6 +107,7 @@ in
     recursive = true;
   };
   home.packages = with pkgs; [
+    (pkgs.callPackage ./pkgs/astroimagej { })
     neovim
     xournalpp
     fastfetch

@@ -1,20 +1,22 @@
 { pkgs, inputs, ... }:
 
 let
-  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
+  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
 in
 {
+  imports = [
+   inputs.spicetify-nix.homeManagerModules.spicetify
+  ];
   programs.spicetify = {
     enable = true;
     enabledExtensions = with spicePkgs.extensions; [
       adblockify
+      hidePodcasts
       shuffle
     ];
     theme = spicePkgs.themes.catppuccin;
     colorScheme = "mocha";
   };
-}
-{
   programs.vesktop = {
     enable = true;
     settings = {
@@ -28,8 +30,7 @@ in
       baseTheme = "catppuccinMocha";
     };
   };
-  home.Packages = with pkgs; [
-    spotify
+  home.packages = with pkgs; [
     ryubing
   ];
 }
