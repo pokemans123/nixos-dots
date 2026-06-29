@@ -8,6 +8,10 @@
 
     };
 
+    astroimagej = {
+      url = "github:pokemans123/astroimagej-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -36,12 +40,6 @@
       ...
     }:
 
-  let
-  
-  overlay = final: prev: {
-  astroimagej = final.callPackage ./pkgs/astroimagej/astroimagej.nix { };
-      };
-   in
     {
       nixosConfigurations.qazniak = nixpkgs.lib.nixosSystem {
 
@@ -68,9 +66,6 @@
               backupFileExtension = "backup";
             };
           }
-	  {
-	    nixpkgs.overlays = [ overlay ];
-	  }
         ];
       };
 

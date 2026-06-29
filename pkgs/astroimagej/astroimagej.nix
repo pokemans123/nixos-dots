@@ -83,7 +83,7 @@ stdenv.mkDerivation {
     description = "ImageJ-based astronomy image processing and photometry tool";
     homepage = "https://astroimagej.com";
     license = lib.licenses.gpl3Plus;
-    platforms = [ "x86_64-linux" ]; # add "aarch64-linux" once hash is confirmed
+    platforms = [ "x86_64-linux" "aarch64-linux" ]; # add "aarch64-linux" once hash is confirmed
     mainProgram = "astroimagej";
   };
 }

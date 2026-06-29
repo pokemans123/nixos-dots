@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "astroimagej": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1782498071,
+        "narHash": "sha256-Qg1xgta4XVuJV31gOGY9MuBprZSUesXr47r+sCHb5zQ=",
+        "owner": "pokemans123",
+        "repo": "astroimagej-flake",
+        "rev": "90170a3371b653f12fa1011d3a553acf4538f5c5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pokemans123",
+        "repo": "astroimagej-flake",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -63,11 +83,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1782408529,
-        "narHash": "sha256-mgtBoo2cbStMZHw8ulBQ4/XgPx9IE9BxJ3w22vGEZw8=",
+        "lastModified": 1782487467,
+        "narHash": "sha256-uDNAooxOUlbJL8IqYL0lecPDXpNqvkyL4A7c+7XQpzM=",
         "owner": "noctalia-dev",
         "repo": "noctalia",
-        "rev": "01d09b5131f58654b703da362c248c4b9205e1f8",
+        "rev": "d956d3ed46eacabe0196b050d5476f193d75061c",
         "type": "github"
       },
       "original": {
@@ -78,6 +98,7 @@
     },
     "root": {
       "inputs": {
+        "astroimagej": "astroimagej",
         "home-manager": "home-manager",
         "niri-nix": "niri-nix",
         "nixpkgs": "nixpkgs",
