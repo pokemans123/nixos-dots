@@ -124,6 +124,7 @@ in
     gtk2
     localsend
     gocryptfs
+    polybar
     thunderbird
     inputs.astroimagej.packages.${pkgs.system}.astroimagej
     (pkgs.writeShellApplication {
