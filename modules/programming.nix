@@ -8,6 +8,8 @@
   home.packages = with pkgs; [
     basedpyright
     alejandra
+    emacs-nox
+    neovim
     python313
     ripgrep
     gcc

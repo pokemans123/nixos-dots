@@ -41,6 +41,7 @@
     autoRepeatDelay = 200;
     autoRepeatInterval = 35;
     windowManager.oxwm.enable = true;
+    windowManager.i3.enable = true;
     desktopManager.xfce.enable = true;
   };
   services.flatpak.enable = true;
@@ -113,8 +114,8 @@
   programs.zsh = {
     enable = true;
   };
-  programs.hyprland.enable = true;
 
+  programs.hyprland.enable = true;
   programs.niri = {
     enable = true;
     package = inputs.niri-nix.packages.${pkgs.stdenv.hostPlatform.system}.niri;
