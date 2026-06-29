@@ -54,7 +54,7 @@ local blocks = {
     oxwm.bar.block.ram({
         format = "Ram: {used}/{total} GB",
         interval = 5,
-        color = colors.light_blue,
+        color = colors.red,
         underline = true,
     }),
     oxwm.bar.block.static({
@@ -67,7 +67,7 @@ local blocks = {
         format = "{}",
         date_format = "%a, %b %d - %-I:%M %P",
         interval = 1,
-        color = colors.cyan,
+        color = colors.purple,
         underline = true,
     }),
     -- Uncomment to add battery status (useful for laptops)
@@ -322,5 +322,6 @@ oxwm.key.chord({
 -- Uncomment and modify these examples, or add your own
 
 oxwm.autostart("picom")
+oxwm.autostart("xwallpaper --zoom $(cat ~/nixos-dots/config/.wallpaper)")
 -- oxwm.autostart("dunst")
 oxwm.autostart("nm-applet")
