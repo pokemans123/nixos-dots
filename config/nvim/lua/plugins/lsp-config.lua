@@ -14,12 +14,13 @@ return {
    {
       "neovim/nvim-lspconfig",
       config = function()
-	 vim.lsp.enable('pyright')
+	 vim.lsp.enable('basedpyright')
 	 vim.lsp.enable('lua_ls')
 	 vim.lsp.enable('bashls')
 	 vim.lsp.enable('ruff')
 	 vim.lsp.enable('html')
 	 vim.lsp.enable('r_language_server')
+	 vim.lsp.enable('jdtls')
 	 vim.lsp.enable('cssls')
 	 vim.lsp.enable('air')
 

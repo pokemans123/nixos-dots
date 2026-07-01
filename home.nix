@@ -42,6 +42,7 @@ in
       	 sudo nixos-rebuild switch --flake ~/nixos-dots#"$1"
             }
             fastfetch -c ~/.config/fastfetch/config13.jsonc
+	    nitch
 
     '';
 
@@ -90,6 +91,10 @@ in
     source = symlink "${dotfiles}/kitty/";
     recursive = true;
   };
+  xdg.configFile."alacritty" = {
+    source = symlink "${dotfiles}/alacritty/";
+    recursive = true;
+  };
   xdg.configFile."fastfetch" = {
     source = symlink "${dotfiles}/fastfetch/";
     recursive = true;
@@ -110,6 +115,7 @@ in
     libreoffice-fresh
     xournalpp
     fastfetch
+    nitch
     rofi
     nwg-look
     candy-icons

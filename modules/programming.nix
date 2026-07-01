@@ -8,14 +8,15 @@
   home.packages = with pkgs; [
     basedpyright
     alejandra
-    emacs-nox
     neovim
+    texlab
     python313
     ripgrep
     gcc
     nil
     stylua
     lua-language-server
+    bash-language-server
     tmux
     vscodium
     zed-editor

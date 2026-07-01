@@ -55,6 +55,9 @@
   };
   nixpkgs.config = {
     allowUnfree = true;
+    permitInsecurePackages = [
+      "pnpm-10.29.2"
+    ];
   };
 
   # Enable the X11 windowing system.
@@ -142,6 +145,7 @@
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
     (import ./config/screenshot.nix { inherit pkgs; })
+    (import ./modules/hyphenation.nix { inherit pkgs; })
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     neovim
     nixd
@@ -160,9 +164,11 @@
     playerctl
     tumbler
     brightnessctl
+    xfce4-pulseaudio-plugin
     pkgs.android-studio
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+    gamescope
   ];
   nixpkgs.config.android_sdk.accept_license = true;
   fonts.packages = with pkgs; [
