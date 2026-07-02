@@ -53,6 +53,7 @@
           ./configuration.nix
           ./hosts/qazniak/hardware-configuration.nix
           ./hosts/qazniak/qazniak.nix
+	  ./modules/virtmachine.nix
           home-manager.nixosModules.home-manager
           {
             home-manager = {

@@ -10,6 +10,7 @@
     alejandra
     neovim
     texlab
+    texliveFullWithDocs
     python313
     ripgrep
     gcc
