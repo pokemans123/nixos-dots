@@ -9,6 +9,7 @@ in
     ./modules/filebrowser.nix
     ./modules/programming.nix
     ./modules/entertainment.nix
+    ./modules/emacs.nix
   ];
   home.username = "pranav";
   home.homeDirectory = "/home/pranav";
