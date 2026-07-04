@@ -7,10 +7,13 @@
 
    home.packages = with pkgs; [
       ripgrep
+      ispell
+      shellcheck
+      pandoc
+      nerd-fonts.symbols-only
       fd
       sqlite
       gcc
       coreutils
-      clang
    ];
 }

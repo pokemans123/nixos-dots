@@ -44,6 +44,7 @@ in
             }
             fastfetch -c ~/.config/fastfetch/config13.jsonc
 	    nitch
+	    export PATH="$HOME/.config/emacs/bin:$PATH"
 
     '';
 

@@ -273,11 +273,12 @@ layout {
 // See the binds section below for more spawn examples.
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
-spawn-at-startup "waybar"
+// spawn-at-startup "waybar"
 spawn-at-startup "noctalia"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
+spawn-sh-at-startup "emacs --daemon"
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
@@ -354,6 +355,7 @@ window-rule {
    match app-id="explorer.exe"
    match app-id="codium"
    match app-id="dev.zed.Zed"
+   match app-id="Emacs"
    open-maximized true
 }
 
@@ -397,6 +399,7 @@ binds {
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn-sh "noctalia msg session lock"; }
     Mod+B hotkey-overlay-title="Open a Browser: zen" { spawn "zen"; }
     Mod+E hotkey-overlay-title="Open a file exploer: nautilus" { spawn "nautilus"; }
+    Mod+D hotkey-overlay-title="Open Qmacs" { spawn-sh "emacsclient -c -a 'emacs'"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.

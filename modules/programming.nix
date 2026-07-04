@@ -5,6 +5,11 @@
     enable = true;
     package = pkgs.jdk25;
   };
+  programs.direnv = {
+   enable = true;
+   nix-direnv.enable = true;
+   enableZshIntegration = true;
+  };
   home.packages = with pkgs; [
     basedpyright
     alejandra

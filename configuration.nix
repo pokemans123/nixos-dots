@@ -175,6 +175,7 @@
     nerd-fonts.intone-mono
     nerd-fonts.monofur
     nerd-fonts.anonymice
+    nerd-fonts.iosevka
     redhat-official-fonts
     corefonts
     vista-fonts
