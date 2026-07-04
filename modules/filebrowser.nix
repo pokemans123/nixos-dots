@@ -23,9 +23,6 @@
     unzrip
     shotwell
     mpv
-    xwallpaper
-    xclip
-    maim
     mpvScripts.manga-reader
   ];
 }
