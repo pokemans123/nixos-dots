@@ -36,14 +36,7 @@
     };
   };
 
-  services.xserver = {
-    enable = true;
-    autoRepeatDelay = 200;
-    autoRepeatInterval = 35;
-    windowManager.oxwm.enable = true;
-    windowManager.i3.enable = true;
-    desktopManager.xfce.enable = true;
-  };
+
   services.flatpak.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   xdg.portal.config.common.default = "gtk";
