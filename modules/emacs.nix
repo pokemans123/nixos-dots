@@ -5,6 +5,8 @@
       package = pkgs.emacs30;
    };
 
+   home.file.".config/doom".source = ./modules/doom;
+
    home.packages = with pkgs; [
       ripgrep
       ispell

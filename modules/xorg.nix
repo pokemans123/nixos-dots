@@ -10,7 +10,7 @@
     desktopManager.xfce.enable = true;
   };
 
-  pkgs = with pkgs; [
+  environment.systemPackages = with pkgs; [
     xwallpaper
     xclip
     maim
