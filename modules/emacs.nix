@@ -5,8 +5,10 @@
       package = pkgs.emacs30;
    };
 
-   home.file.".config/doom".source = ./modules/doom;
-
+   home.file.".config/doom" = {
+     source = ./doom;
+     recursive = true;
+    };
    home.packages = with pkgs; [
       ripgrep
       ispell
@@ -17,5 +19,6 @@
       sqlite
       gcc
       coreutils
+      emacsPackages.pdf-view-restore
    ];
 }

@@ -53,7 +53,6 @@
     ];
   };
 
-  # Enable the X11 windowing system.
   # services.xserver.enable = true;
   nix.settings.experimental-features = [
     "nix-command"
@@ -111,11 +110,6 @@
     enable = true;
   };
 
-  programs.hyprland.enable = true;
-  programs.niri = {
-    enable = true;
-    package = inputs.niri-nix.packages.${pkgs.stdenv.hostPlatform.system}.niri;
-  };
 
   services.i2pd = {
     enable = true;
@@ -137,12 +131,10 @@
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
-    (import ./config/screenshot.nix { inherit pkgs; })
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     neovim
     nixd
     git
-    xwayland-satellite
     ntfs3g
     wget
     kitty
@@ -156,10 +148,8 @@
     playerctl
     tumbler
     brightnessctl
-    xfce4-pulseaudio-plugin
     pkgs.android-studio
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
-    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     gamescope
   ];
   nixpkgs.config.android_sdk.accept_license = true;

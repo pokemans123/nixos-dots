@@ -1,0 +1,10 @@
+{
+  "workspace": {
+    "library": [
+      "/home/pranav/nixos-dots/config/hypr"
+    ]
+  },
+    "diagnostics": {
+        "globals": [ "hl" ]
+    }
+}

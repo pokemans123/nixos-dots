@@ -47,3 +47,12 @@ hl.window_rule({
     move  = "20 monitor_h-120",
     float = true,
 })
+
+hl.window_rule({
+    match = { class = "Emacs" },
+    workspace = 1;
+})
+
+for i=1,6 do
+  hl.workspace_rule ({ workspace = i, persistent = true })
+end

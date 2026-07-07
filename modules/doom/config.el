@@ -37,12 +37,28 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type 'relative)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
 
+(after! org
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   (append org-babel-load-languages
+           '((python . t)
+             (shell . t))))
+
+  (setq org-babel-default-header-args:python
+        '((:session . "py")
+          (:results . "output replace")
+          (:exports . "both")))
+
+  (setq org-confirm-babel-evaluate nil
+        org-image-actual-width '(700))
+
+  (add-hook 'org-babel-after-execute-hook 'org-display-inline-images))
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `with-eval-after-load' block, otherwise Doom's defaults may override your
@@ -66,9 +82,9 @@
 ;;   `require' or `use-package'.
 ;; - `map!' for binding new keys
 (map! :leader
-     :desc "Open terminal"
-     "t o" #'ghostel
-)
+      :desc "Open terminal"
+      "t o" #'ghostel
+      )
 
 (map! :leader
       :desc "Configure system"
@@ -88,12 +104,36 @@
       :desc "Open Neotree"
       "e"
       #'neotree)
+(map! :leader
+      :desc "Define a word"
+      "d w"
+      #'dictionary-search)
+(map! :leader
+      :desc "Open LSP buffer"
+      "k k"
+      #'eldoc-doc-buffer)
 (defun my/token ()
   "Open github token"
   (interactive)
   (find-file "~/Documents/token.txt"))
 
+(after! pdf-tools (add-hook 'pdf-view-mode-hook #'pdf-view-restore-mode))
 
+(after! org
+  (add-to-list 'org-src-lang-modes '("nix" . nix)))
+
+(with-eval-after-load 'ox-latex
+  (add-to-list 'org-latex-classes
+               '("org-plain-latex"
+                 "\\documentclass{article}
+           [NO-DEFAULT-PACKAGES]
+           [PACKAGES]
+           [EXTRA]"
+                 ("\\section{%s}" . "\\section*{%s}")
+                 ("\\subsection{%s}" . "\\subsection*{%s}")
+                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                 ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
 
 ;;
 ;; To get information about any of these functions/macros, move the cursor over

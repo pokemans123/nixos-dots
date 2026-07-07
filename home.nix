@@ -2,6 +2,16 @@
 let
   symlink = path: config.lib.file.mkOutOfStoreSymlink path;
   dotfiles = "${config.home.homeDirectory}/nixos-dots/config";
+  configs = {
+    nvim = "nvim";
+    niri = "niri";
+    hypr = "hypr";
+    i3 = "i3";
+    kitty = "kitty";
+    rofi = "rofi";
+    fastfetch = "fastfetch";
+    tmux = "tmux";
+  };
 in
 
 {
@@ -21,6 +31,9 @@ in
     automount = true;
     notify = true;
   };
+  home.sessionVariables = {
+    DOOMDIR = "$HOME/nixos-dots/modules/doom";
+  };
   programs.zsh = {
     enable = true;
     oh-my-zsh = {
@@ -35,6 +48,8 @@ in
       btw = "echo I use nixos, btw";
       ls = "lsd";
       xd = "XD";
+      qmacs = "DOOMDIR=~/nixos-dots/modules/doom emacsclient -c -a 'emacs'";
+      restart-emacs = "pkill emacs; sleep 2; emacs --daemon";
     };
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
@@ -71,48 +86,11 @@ in
   };
 
 
-  xdg.configFile."hypr" = {
-    source = symlink "${dotfiles}/hypr/";
+  xdg.configFile = builtins.mapAttrs (name: subpath: {
+    source = symlink "${dotfiles}/${subpath}";
     recursive = true;
-  };
 
-  xdg.configFile."rofi" = {
-    source = symlink "${dotfiles}/rofi/";
-    recursive = true;
-  };
-
-  xdg.configFile."niri" = {
-    source = symlink "${dotfiles}/niri/";
-    recursive = true;
-  };
-  xdg.configFile."nvim" = {
-    source = symlink "${dotfiles}/nvim/";
-    recursive = true;
-  };
-  xdg.configFile."kitty" = {
-    source = symlink "${dotfiles}/kitty/";
-    recursive = true;
-  };
-  xdg.configFile."alacritty" = {
-    source = symlink "${dotfiles}/alacritty/";
-    recursive = true;
-  };
-  xdg.configFile."fastfetch" = {
-    source = symlink "${dotfiles}/fastfetch/";
-    recursive = true;
-  };
-  xdg.configFile."i3" = {
-    source = symlink "${dotfiles}/i3/";
-    recursive = true;
-  };
-  xdg.configFile."oxwm" = {
-    source = symlink "${dotfiles}/oxwm/";
-    recursive = true;
-  };
-  xdg.configFile."tmux" = {
-    source = symlink "${dotfiles}/tmux/";
-    recursive = true;
-  };
+  }) configs;
   home.packages = with pkgs; [
     libreoffice-fresh
     xournalpp
@@ -132,7 +110,6 @@ in
     gtk2
     localsend
     gocryptfs
-    polybar
     thunderbird
     inputs.astroimagej.packages.${pkgs.system}.astroimagej
     (pkgs.writeShellApplication {

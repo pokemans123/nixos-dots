@@ -16,7 +16,6 @@
     neovim
     texlab
     texliveFullWithDocs
-    python313
     ripgrep
     gcc
     nil
@@ -31,5 +30,8 @@
     cargo
     jdt-language-server
     ruff
+    cmake
+    pkg-config
+    python313
   ];
 }

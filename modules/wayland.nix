@@ -1,0 +1,17 @@
+{ config, inputs, lib, pkgs, ... }:
+
+{
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
+  programs.niri = {
+    enable = true;
+    package = inputs.niri-nix.packages.${pkgs.stdenv.hostPlatform.system}.niri;
+  };
+  home.Packages = with pkgs; [
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+    xwayland-satellite
+    (import ./config/screenshot.nix { inherit pkgs; })
+  ];
+}
