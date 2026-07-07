@@ -11,6 +11,7 @@ let
     rofi = "rofi";
     fastfetch = "fastfetch";
     tmux = "tmux";
+    qtile = "qtile";
   };
 in
 

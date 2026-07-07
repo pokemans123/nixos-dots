@@ -9,9 +9,9 @@
     enable = true;
     package = inputs.niri-nix.packages.${pkgs.stdenv.hostPlatform.system}.niri;
   };
-  home.Packages = with pkgs; [
+  environment.systemPackages= with pkgs; [
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     xwayland-satellite
-    (import ./config/screenshot.nix { inherit pkgs; })
+    (import ../config/screenshot.nix { inherit pkgs; })
   ];
 }
