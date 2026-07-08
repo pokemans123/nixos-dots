@@ -138,6 +138,7 @@
     ntfs3g
     wget
     kitty
+    ghostty
     bluez
     bluez-tools
     gvfs
