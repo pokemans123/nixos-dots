@@ -97,6 +97,7 @@
       "video"
       "storage"
       "lpadmin"
+      "render"
     ];
     shell = pkgs.zsh;
     packages = with pkgs; [
@@ -149,11 +150,11 @@
     playerctl
     tumbler
     brightnessctl
-    pkgs.android-studio
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     gamescope
+    gpu-screen-recorder
+    gpu-screen-recorder-gtk
   ];
-  nixpkgs.config.android_sdk.accept_license = true;
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
     nerd-fonts.intone-mono

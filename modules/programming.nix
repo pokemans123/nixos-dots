@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, nixpkgs, ... }:
 
 {
   programs.java = {
@@ -10,8 +10,10 @@
    nix-direnv.enable = true;
    enableZshIntegration = true;
   };
+  nixpkgs.config.android_sdk.accept_license = true;
   home.packages = with pkgs; [
     basedpyright
+    android-studio
     alejandra
     neovim
     texlab

@@ -344,7 +344,7 @@ window-rule {
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     match app-id="satty"
-    match app-id="dev.noctalia.Noctalia.Settings"
+    match title="Noctalia Settings"
     match app-id="org.gnome.FileRoller"
     open-floating true
 }

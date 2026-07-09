@@ -48,6 +48,18 @@ keys = [
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "shift"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod], "m", lazy.shutdown(), desc="Shutdown Qtile"),
+    Key([],"XF86AudioRaiseVolume", lazy.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ l 1.0")),
+    Key([],"XF86AudioLowerVolume", lazy.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-")),
+    Key([],"XF86AudioMute", lazy.spawn("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")),
+    Key([],"XF86AudioMicMute", lazy.spawn("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle")),
+    
+    Key([],"XF86AudioPlay", lazy.spawn("playerctl play-pause")),
+    Key([],"XF86AudioStop", lazy.spawn("playerctl stop")),
+    Key([],"XF86AudioPrev", lazy.spawn("playerctl previous")),
+    Key([],"XF86AudioNext", lazy.spawn("playerctl next")),
+    
+    Key([],"XF86MonBrightnessUp", lazy.spawn("brightnessctl --class=backlight set +10%")),
+    Key([],"XF86MonBrightnessDown", lazy.spawn("brightnessctl --class=backlight set 10%-")),
 ]
 
 for vt in range(1, 8):
@@ -102,10 +114,19 @@ layouts = [
     layout.Zoomy(),
 ]
 
+colors = {
+    "bg":"#24283b",
+    "fg": "#bb9af7",
+    "fg1": "#73daca",
+    "accent": "#7aa2f7",
+    "urgent": "#f7768e"
+}
+
 widget_defaults = dict(
     font="Iosevka Nerd Font",
-    fontsize=15,
+    fontsize=18,
     padding=5,
+    foreground=colors["fg"],
 )
 extension_defaults = widget_defaults.copy()
 
@@ -114,25 +135,35 @@ wall_path = Path.home().joinpath("nixos-dots/config/.wallpaper").read_text().str
 def make_bar():
     return bar.Bar(
             [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
-                widget.Prompt(),
-                widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
+                widget.BatteryIcon(padding=2),
+                widget.Battery(),
+
+                widget.Spacer(),
+
+                widget.GroupBox(
+                    highlight_method="line",
+                    active=colors["fg"],
+                    inactive=colors["fg1"],
+                    highlight_color = [colors["bg"],colors["bg"]],
+                    this_current_screen_border = colors["urgent"],
                 ),
-                widget.TextBox("default config", name="default"),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
-                # widget.StatusNotifier(),
-                widget.Systray(),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                widget.QuickExit(),
+                widget.Prompt(),
+                widget.CurrentLayout(),
+
+                widget.Spacer(),
+
+                widget.StatusNotifier(),
+                widget.PulseVolume(
+                    emoji = True,
+                    emoji_list = ['🔇', '🔈', '🔉', '🔊'],
+                ),
+                widget.Clock(format="%m.%d.%Y %a %I:%M %p"),
+                widget.Backlight(
+                    foreground=colors["accent"],
+                ),
             ],
             24,
+            background=colors["bg"],
     )
 
 screens = [
