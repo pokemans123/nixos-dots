@@ -1,10 +1,7 @@
-require('modules.monitors')
-require('modules.style')
-require('modules.keybinds')
-require('modules.windows')
-
-
-
+require("modules.monitors")
+require("modules.style")
+require("modules.keybinds")
+require("modules.windows")
 
 -------------------
 ---- AUTOSTART ----
@@ -15,14 +12,14 @@ require('modules.windows')
 -- Autostart necessary processes (like notifications daemons, status bars, etc.)
 -- Or execute your favorite apps at launch like this:
 --
-hl.on("hyprland.start", function () 
---   hl.exec_cmd(terminal)
---   hl.exec_cmd("nm-applet")
---   hl.exec_cmd("waybar & hyprpaper & firefox")
-  hl.exec_cmd("noctalia")
-  hl.exec_cmd("emacs --daemon")
+hl.on("hyprland.start", function()
+	--   hl.exec_cmd(terminal)
+	--   hl.exec_cmd("nm-applet")
+	--   hl.exec_cmd("waybar & hyprpaper & firefox")
+	hl.exec_cmd("noctalia")
+	hl.exec_cmd("emacs --daemon")
+	hl.exec_cmd("emacsclient -c -a 'emacs'")
 end)
-
 
 -------------------------------
 ---- ENVIRONMENT VARIABLES ----
@@ -32,7 +29,6 @@ end)
 
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
-
 
 -----------------------
 ----- PERMISSIONS -----
@@ -52,55 +48,51 @@ hl.env("HYPRCURSOR_SIZE", "24")
 -- hl.permission("/usr/(lib|libexec|lib64)/xdg-desktop-portal-hyprland", "screencopy", "allow")
 -- hl.permission("/usr/(bin|local/bin)/hyprpm", "plugin", "allow")
 
-
-
 ----------------
 ----  MISC  ----
 ----------------
 
 hl.config({
-    misc = {
-        force_default_wallpaper = 1,    -- Set to 0 or 1 to disable the anime mascot wallpapers
-        disable_hyprland_logo   = true, -- If true disables the random hyprland logo / anime girl background. :(
-    },
+	misc = {
+		force_default_wallpaper = 1, -- Set to 0 or 1 to disable the anime mascot wallpapers
+		disable_hyprland_logo = true, -- If true disables the random hyprland logo / anime girl background. :(
+	},
 })
-
 
 ---------------
 ---- INPUT ----
 ---------------
 
 hl.config({
-    input = {
-        kb_layout  = "us",
-        kb_variant = "",
-        kb_model   = "",
-        kb_options = "",
-        kb_rules   = "",
+	input = {
+		kb_layout = "us",
+		kb_variant = "",
+		kb_model = "",
+		kb_options = "",
+		kb_rules = "",
 
-        follow_mouse = 1,
+		follow_mouse = 1,
 
-        sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
+		sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
 
-        touchpad = {
-            natural_scroll = false,
-        },
-    },
+		touchpad = {
+			natural_scroll = false,
+		},
+	},
 })
 
 hl.gesture({
-    fingers = 3,
-    direction = "horizontal",
-    action = "workspace"
+	fingers = 3,
+	direction = "horizontal",
+	action = "workspace",
 })
 
 -- Example per-device config
 -- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Devices/ for more
 hl.device({
-    name        = "epic-mouse-v1",
-    sensitivity = -0.5,
+	name = "epic-mouse-v1",
+	sensitivity = -0.5,
 })
-
 
 -- For Noctalia Color templates
 require("noctalia").apply_theme()

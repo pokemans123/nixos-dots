@@ -23,6 +23,10 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
+  imports = [
+    inputs.sops-nix.nixosModules.sops
+  ];
+
   services.tumbler.enable = true;
   services.keyd = {
     enable = true;
@@ -139,7 +143,7 @@
     ntfs3g
     wget
     kitty
-    ghostty
+    alacritty
     bluez
     bluez-tools
     gvfs
@@ -154,6 +158,9 @@
     gamescope
     gpu-screen-recorder
     gpu-screen-recorder-gtk
+    cmake
+    gnumake
+    clang
   ];
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono

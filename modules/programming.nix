@@ -13,6 +13,7 @@
   nixpkgs.config.android_sdk.accept_license = true;
   home.packages = with pkgs; [
     basedpyright
+    cmake
     android-studio
     alejandra
     neovim

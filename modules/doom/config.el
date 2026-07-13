@@ -32,8 +32,8 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-tokyo-night)
 (setq doom-font (font-spec :family "Iosevka Nerd Font" :size 18))
+(load-theme 'noctalia t)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -56,7 +56,7 @@
           (:exports . "both")))
 
   (setq org-confirm-babel-evaluate nil
-        org-image-actual-width '(700))
+        org-image-actual-width '(900))
 
   (add-hook 'org-babel-after-execute-hook 'org-display-inline-images))
 
@@ -81,9 +81,21 @@
 ;;   this file. Emacs searches the `load-path' when you load packages with
 ;;   `require' or `use-package'.
 ;; - `map!' for binding new keys
+(defun my/vterm-here ()
+  "Open vterm in current window."
+  (interactive)
+  (let ((default-directory (or (and buffer-file-name (file-name-directory buffer-file-name))
+                               default-directory))
+        (display-buffer-alist nil))  ; bypass all display rules
+    (pop-to-buffer-same-window (vterm "*vterm*"))))
 (map! :leader
       :desc "Open terminal"
-      "t o" #'ghostel
+      "t t" #'vterm
+      )
+
+(map! :leader
+      :desc "Open terminal in other window"
+      "t o" #'my/vterm-here
       )
 
 (map! :leader
@@ -93,13 +105,6 @@
        (dired "~/nixos-dots")
        ))
 
-(map! :leader
-      :desc "Terminal split horizontal"
-      "t t"
-      (cmd!
-       (split-window-below)
-       (other-window 1)
-       (ghostel)))
 (map! :leader
       :desc "Open Neotree"
       "e"

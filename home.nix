@@ -12,6 +12,7 @@ let
     fastfetch = "fastfetch";
     tmux = "tmux";
     qtile = "qtile";
+    alacritty = "alacritty";
   };
 in
 
@@ -24,7 +25,12 @@ in
   ];
   home.username = "pranav";
   home.homeDirectory = "/home/pranav";
-  programs.git.enable = true;
+  programs.git = {
+    enable = true;
+    extraConfig = {
+     credential.helper = "store";
+    };
+  };
   home.stateVersion = "26.05";
   # services.polkit-gnome.enable = true;
   services.udiskie = {
