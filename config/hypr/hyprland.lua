@@ -17,7 +17,6 @@ hl.on("hyprland.start", function()
 	--   hl.exec_cmd("nm-applet")
 	--   hl.exec_cmd("waybar & hyprpaper & firefox")
 	hl.exec_cmd("noctalia")
-	hl.exec_cmd("emacs --daemon")
 	hl.exec_cmd("emacsclient -c -a 'emacs'")
 end)
 

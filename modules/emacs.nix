@@ -1,14 +1,16 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 {
+   services.emacs = {
+      enable = true;
+      package = pkgs.emacs30;
+      defaultEditor = true;
+   };
+
    programs.emacs = {
       enable = true;
       package = pkgs.emacs30;
    };
 
-   home.file.".config/doom" = {
-     source = ./doom;
-     recursive = true;
-    };
    home.packages = with pkgs; [
       ripgrep
       ispell
@@ -20,5 +22,14 @@
       gcc
       coreutils
       emacsPackages.pdf-view-restore
+      emacsPackages.vterm
+      emacsPackages.emacs-everywhere
+      ydotool
+      wtype
+      wl-clipboard
    ];
+
+   xdg.configFile."doom" = {
+     source = config.lib.file.mkOutOfStoreSymlink "/home/pranav/nixos-dots/modules/doom/";
+   };
 }

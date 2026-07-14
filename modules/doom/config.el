@@ -42,6 +42,8 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
+(setq emacs-everywhere--copy-command "/run/current-system/sw/bin/sh")
+(setq emacs-everywhere-clipboard-sleep-delay 0.5)
 
 (after! org
   (org-babel-do-load-languages

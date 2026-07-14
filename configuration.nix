@@ -41,7 +41,6 @@
   };
 
 
-  services.flatpak.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   xdg.portal.config.common.default = "gtk";
 
@@ -64,7 +63,7 @@
   ];
   services.displayManager.ly.enable = true;
 
-  services.power-profiles-daemon.enable = true;
+  services.thermald.enable = true;
   services.udisks2.enable = true;
 
   # Configure keymap in X11
@@ -90,6 +89,7 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
+  hardware.uinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.pranav = {
@@ -102,6 +102,7 @@
       "storage"
       "lpadmin"
       "render"
+      "uinput"
     ];
     shell = pkgs.zsh;
     packages = with pkgs; [

@@ -38,9 +38,6 @@ in
     automount = true;
     notify = true;
   };
-  home.sessionVariables = {
-    DOOMDIR = "$HOME/nixos-dots/modules/doom";
-  };
   programs.zsh = {
     enable = true;
     oh-my-zsh = {
@@ -55,8 +52,8 @@ in
       btw = "echo I use nixos, btw";
       ls = "lsd";
       xd = "XD";
-      qmacs = "DOOMDIR=~/nixos-dots/modules/doom emacsclient -c -a 'emacs'";
       restart-emacs = "pkill emacs; sleep 2; emacs --daemon";
+      qmacs = "emacsclient -c -a 'emacs'";
     };
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
@@ -67,7 +64,6 @@ in
             fastfetch -c ~/.config/fastfetch/config13.jsonc
 	    nitch
 	    export PATH="$HOME/.config/emacs/bin:$PATH"
-
     '';
 
   };
@@ -96,6 +92,8 @@ in
   xdg.configFile = builtins.mapAttrs (name: subpath: {
     source = symlink "${dotfiles}/${subpath}";
     recursive = true;
+
+
 
   }) configs;
   home.packages = with pkgs; [
