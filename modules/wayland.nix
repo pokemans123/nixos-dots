@@ -12,6 +12,8 @@
   environment.systemPackages= with pkgs; [
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     xwayland-satellite
+    hyprcursor
+    rose-pine-hyprcursor
     (import ../config/screenshot.nix { inherit pkgs; })
   ];
 }

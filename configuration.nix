@@ -56,7 +56,6 @@
     ];
   };
 
-  # services.xserver.enable = true;
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
@@ -66,9 +65,6 @@
   services.thermald.enable = true;
   services.udisks2.enable = true;
 
-  # Configure keymap in X11
-  # services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
   # Enable CUPS to print documents.
   services.avahi = {

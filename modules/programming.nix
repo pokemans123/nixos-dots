@@ -35,6 +35,6 @@
     ruff
     cmake
     pkg-config
-    python313
+    (pkgs.python313.withPackages (ps: [ ps.numpy ]))
   ];
 }

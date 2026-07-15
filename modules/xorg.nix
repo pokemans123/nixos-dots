@@ -7,7 +7,6 @@
     autoRepeatInterval = 35;
     windowManager.i3.enable = true;
     windowManager.qtile.enable = true;
-    desktopManager.xfce.enable = true;
   };
   services.picom = {
     enable = true;
@@ -55,6 +54,5 @@
     xclip
     maim
     i3status
-    xfce4-pulseaudio-plugin
   ];
 }

@@ -6,7 +6,6 @@
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
-
     };
 
     sops-nix = {
@@ -62,6 +61,8 @@
           ./hosts/qazniak/qazniak.nix
 	        ./modules/virtmachine.nix
           ./modules/wayland.nix
+          ./modules/kde.nix
+          ./modules/sdr.nix
           home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -88,6 +89,7 @@
           ./configuration.nix
           ./hosts/qazniak-dell/hardware-configuration.nix
           ./hosts/qazniak-dell/qazniak-dell.nix
+          ./modules/xorg.nix
           home-manager.nixosModules.home-manager
           {
             home-manager = {

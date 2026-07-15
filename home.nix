@@ -88,14 +88,11 @@ in
     };
   };
 
-
   xdg.configFile = builtins.mapAttrs (name: subpath: {
     source = symlink "${dotfiles}/${subpath}";
     recursive = true;
-
-
-
   }) configs;
+
   home.packages = with pkgs; [
     libreoffice-fresh
     xournalpp
@@ -116,6 +113,7 @@ in
     localsend
     gocryptfs
     thunderbird
+    btop
     inputs.astroimagej.packages.${pkgs.system}.astroimagej
     (pkgs.writeShellApplication {
       name = "ns";
@@ -126,5 +124,4 @@ in
       text = builtins.readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
     })
   ];
-
 }
