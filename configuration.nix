@@ -145,6 +145,7 @@
     bluez-tools
     gvfs
     wine64
+    winboat
     qbittorrent
     xd
     winetricks

@@ -13,6 +13,8 @@
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     xwayland-satellite
     hyprcursor
+    xdg-desktop-portal
+    xdg-desktop-portal-hyprland
     rose-pine-hyprcursor
     (import ../config/screenshot.nix { inherit pkgs; })
   ];

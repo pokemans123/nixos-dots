@@ -11,6 +11,7 @@
       package = pkgs.emacs30;
    };
 
+
    home.packages = with pkgs; [
       ripgrep
       ispell

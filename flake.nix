@@ -63,6 +63,8 @@
           ./modules/wayland.nix
           ./modules/kde.nix
           ./modules/sdr.nix
+          ./modules/docker.nix
+          ./modules/syncthing.nix
           home-manager.nixosModules.home-manager
           {
             home-manager = {
