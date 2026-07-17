@@ -95,6 +95,7 @@
       "t t" #'vterm
       )
 
+
 (map! :leader
       :desc "Open terminal in other window"
       "t o" #'my/vterm-here
@@ -119,15 +120,14 @@
       :desc "Open LSP buffer"
       "k k"
       #'eldoc-doc-buffer)
-(defun my/token ()
-  "Open github token"
-  (interactive)
-  (find-file "~/Documents/token.txt"))
+
 
 (after! pdf-tools (add-hook 'pdf-view-mode-hook #'pdf-view-restore-mode))
 
 (after! org
-  (add-to-list 'org-src-lang-modes '("nix" . nix)))
+  (add-to-list 'org-src-lang-modes '("nix" . nix))
+  (setq org-agenda-files
+        '("~/org")))
 
 (with-eval-after-load 'ox-latex
   (add-to-list 'org-latex-classes

@@ -403,6 +403,8 @@ binds {
     Mod+P hotkey-overlay-title="Open up projects in Qmacs" {spawn-sh "~/nixos-dots/emacs-projects.sh"; }
     Mod+Alt+P hotkey-overlay-title="Emacs everywhere" {spawn-sh "emacsclient --eval '(emacs-everywhere)'"; }
 
+    Mod+C hotkey-overlay-title="Quick Captures" {spawn-sh "~/nixos-dots/quick-captures.sh"; }
+
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
     // For example, this is a standard bind to toggle the screen reader (orca).
@@ -611,7 +613,7 @@ binds {
     // Makes the column "fill the rest of the space".
     Mod+Ctrl+F { expand-column-to-available-width; }
 
-    Mod+C { center-column; }
+    // Mod+C { center-column; }
 
     // Center all fully visible columns on screen.
     Mod+Ctrl+C { center-visible-columns; }
