@@ -51,6 +51,11 @@
    (append org-babel-load-languages
            '((python . t)
              (shell . t))))
+  (after! org
+    (setq org-agenda-files "~/org")
+    (setq org-log-done 'time)
+    (setq org-refile-targets
+          '((org-agenda-files :maxlevel . 4))))
 
   (setq org-babel-default-header-args:python
         '((:session . "py")
@@ -61,6 +66,24 @@
         org-image-actual-width '(900))
 
   (add-hook 'org-babel-after-execute-hook 'org-display-inline-images))
+
+(use-package org-roam
+  :ensure t
+  :custom
+  (org-roam-directory (file-truename "~/notes"))
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n g" . org-roam-graph)
+         ("C-c n i" . org-roam-node-insert)
+         ("C-c n c" . org-roam-capture)
+         ;; Dailies
+         ("C-c n j" . org-roam-dailies-capture-today))
+  :config
+  ;; If you're using a vertical completion framework, you might want a more informative completion interface
+  (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
+  (org-roam-db-autosync-mode)
+  ;; If using org-roam-protocol
+  (require 'org-roam-protocol))
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `with-eval-after-load' block, otherwise Doom's defaults may override your
@@ -94,12 +117,16 @@
       :desc "Open terminal"
       "t t" #'vterm
       )
-
+(map! :leader
+      "RET" #'(lambda ()
+                (interactive)
+                (find-file "~/org/bookmarks.org")))
 
 (map! :leader
       :desc "Open terminal in other window"
       "t o" #'my/vterm-here
       )
+
 
 (map! :leader
       :desc "Configure system"
@@ -126,6 +153,68 @@
 
 (after! org
   (add-to-list 'org-src-lang-modes '("nix" . nix))
+  (setq org-default-notes-file (concat org-directory "/captures.org"))
+
+  ;; Capture templates
+  (setq org-capture-templates
+        '(("t" "Todo" entry
+           (file+headline "~/org/captures.org" "Todo")
+           "* TODO %^{Task}\n:PROPERTIES:\n:CREATED: %U\n:CAPTURED: %a\n:END:\n%?")
+
+          ("e" "Event" entry
+           (file+headline "~/org/agenda.org" "Events")
+           "* TODO %^{Event} :event: \n%^{SCHEDULED}T\n:PROPERTIES:\n:CREATED: %U\n:CAPTURED: %a\n:CONTACT:\n:END:\n%?")
+
+          ("p" "Project" entry
+           (file+headline "~/org/longterm.org" "Projects")
+           "* PROJ %^{Project name}\n:PROPERTIES:\n:CREATED: %U\n:CAPTURED: %a\n:END:\n** TODO %?")
+
+          ("i" "Idea" entry
+           (file+headline "~/org/captures.org" "Ideas")
+           "** IDEA %^{Idea}\n:PROPERTIES:\n:CREATED: %U\n:CAPTURED: %a\n:END:\n%?")
+
+          ("b" "Bookmark" entry
+           (file+headline "~/org/bookmarks.org" "Bookmarks")
+           "** [[%^{URL}][%^{Title}]]\n:PROPERTIES:\n:CREATED: %U\n:TAGS: %(org-capture-bookmark-tags)\n:END:\n\n"
+           :empty-lines 0)
+
+          ("n" "Note" entry
+           (file+headline "~/org/captures.org" "Notes")
+           "* [%<%Y-%m-%d %a>] %^{Title}\n:PROPERTIES:\n:CREATED: %U\n:CAPTURED: %a\n:END:\n%?"
+           :prepend t)))
+
+  (defun org-capture-bookmark-tags ()
+    "Get tags from existing bookmarks and prompt for tags with completion."
+    (save-window-excursion
+      (let ((tags-list '()))
+        ;; Collect existing tags
+        (with-current-buffer (find-file-noselect "~/org/bookmarks.org")
+          (save-excursion
+            (goto-char (point-min))
+            (while (re-search-forward "^:TAGS:\\s-*\\(.+\\)$" nil t)
+              (let ((tag-string (match-string 1)))
+                (dolist (tag (split-string tag-string "[,;]" t "[[:space:]]"))
+                  (push (string-trim tag) tags-list))))))
+        ;; Remove duplicates and sort
+        (setq tags-list (sort (delete-dups tags-list) 'string<))
+        ;; Prompt user with completion
+        (let ((selected-tags (completing-read-multiple "Tags (comma-separated): " tags-list)))
+          ;; Return as a comma-separated string
+          (mapconcat 'identity selected-tags ", ")))))
+
+  ;; Helper function to select and link a contact (still used by the Event template)
+  (defun org-capture-ref-link (file)
+    "Create a link to a contact in contacts.org"
+    (let* ((headlines (org-map-entries
+                       (lambda ()
+                         (cons (org-get-heading t t t t)
+                               (org-id-get-create)))
+                       t
+                       (list file)))
+           (contact (completing-read "Contact: "
+                                     (mapcar #'car headlines)))
+           (id (cdr (assoc contact headlines))))
+      (format "[[id:%s][%s]]" id contact)))
   (setq org-agenda-files
         '("~/org")))
 
@@ -151,3 +240,46 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+;; Set archive location to done.org under current date
+;; (defun my/archive-done-task ()
+;;   "Archive current task to done.org under today's date"
+;;   (interactive)
+;;   (let* ((date-header (format-time-string "%Y-%m-%d %A"))
+;;          (archive-file (expand-file-name "~/org/done.org"))
+;;          (location (format "%s::* %s" archive-file date-header)))
+;;     ;; Only archive if not a habit
+;;     (unless (org-is-habit-p)
+;;       ;; Add COMPLETED property if it doesn't exist
+;;       (org-set-property "COMPLETED" (format-time-string "[%Y-%m-%d %a %H:%M]"))
+;;       ;; Set archive location and archive
+;;       (setq org-archive-location location)
+;;       (org-archive-subtree))))
+
+;; Automatically archive when marked DONE, except for habits
+;; (add-hook 'org-after-todo-state-change-hook
+;;           (lambda ()
+;;             (when (and (string= org-state "DONE")
+;;                        (not (org-is-habit-p)))
+;;               (my/archive-done-task))))
+
+;; NOTE: commented out along with my/archive-done-task above, since that
+;; function is disabled. Leaving this active would error on keypress.
+;; (define-key org-mode-map (kbd "C-c C-x C-a") 'my/archive-done-task)
+
+(use-package! websocket
+  :after org-roam)
+
+(use-package! org-roam-ui
+  :after org-roam ;; or :after org
+  ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+  ;;         a hookable mode anymore, you're advised to pick something yourself
+  ;;         if you don't care about startup time, use
+  ;;  :hook (after-init . org-roam-ui-mode)
+  :config
+  (setq org-roam-ui-sync-theme t
+        org-roam-ui-follow t
+        org-roam-ui-update-on-save t
+        org-roam-ui-open-on-start t))
+(use-package! org-fragtog
+  :hook (org-mode . org-fragtog-mode))

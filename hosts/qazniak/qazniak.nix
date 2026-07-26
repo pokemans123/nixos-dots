@@ -9,6 +9,8 @@
   networking.hostName = "qazniak"; # Define your hostname.
   boot.resumeDevice = "/dev/nvme0n1p4";
 
+  services.tor.enable = true;
+
 
   hardware.graphics = {
     enable = true;

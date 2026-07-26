@@ -3,9 +3,11 @@
   inputs = {
 
     nixpkgs.url = "nixpkgs/nixos-26.05";
+    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
+
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     sops-nix = {
@@ -24,7 +26,7 @@
 
     noctalia = {
       url = "github:noctalia-dev/noctalia";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     niri-nix = {
@@ -41,6 +43,7 @@
     inputs@{
       self,
       nixpkgs,
+      nixpkgs-unstable,
       home-manager,
       ...
     }:
@@ -51,7 +54,7 @@
         system = "x86_64-linux";
 
         specialArgs = {
-          inherit inputs;
+          inherit inputs nixpkgs-unstable;
         };
 
         modules = [
@@ -61,9 +64,7 @@
           ./hosts/qazniak/qazniak.nix
 	        ./modules/virtmachine.nix
           ./modules/wayland.nix
-          ./modules/kde.nix
           ./modules/sdr.nix
-          ./modules/docker.nix
           ./modules/syncthing.nix
           home-manager.nixosModules.home-manager
           {

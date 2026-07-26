@@ -12,6 +12,14 @@
 (package! pdf-view-restore)
 (package! ox-gfm)
 (package! markdown-preview-mode)
+(package! org-roam)
+(package! xenops)
+(unpin! org-roam)
+(package! org-roam-ui)
+
+(package! org-fragtog)
+
+
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;; (package! some-package)
 

@@ -51,8 +51,8 @@
   };
   nixpkgs.config = {
     allowUnfree = true;
-    permitInsecurePackages = [
-      "pnpm-10.29.2"
+    permittedInsecurePackages = [
+      "electron-40.10.5"
     ];
   };
 
@@ -63,6 +63,7 @@
   services.displayManager.ly.enable = true;
 
   services.thermald.enable = true;
+  services.power-profiles-daemon.enable = true;
   services.udisks2.enable = true;
 
 
@@ -145,7 +146,6 @@
     bluez-tools
     gvfs
     wine64
-    winboat
     qbittorrent
     xd
     winetricks

@@ -24,7 +24,10 @@
       coreutils
       emacsPackages.pdf-view-restore
       emacsPackages.vterm
+      emacsPackages.org-fragtog
       emacsPackages.emacs-everywhere
+      emacsPackages.org-roam
+      emacsPackages.org-roam-ui
       ydotool
       wtype
       wl-clipboard

@@ -1,7 +1,27 @@
 #+title: My Qtile Config
 #+author: Pranav Arunkumar
 #+PROPERTY: header-args:python :tangle config.py
-#+startup: overview
+#+startup: showall
+
+* Table of Contents :toc:
+- [[#qtile-default-imports][Qtile Default Imports]]
+  - [[#set-defaultsterminal-browser-etc][Set defaults(terminal, browser, etc.)]]
+- [[#keybindings][Keybindings]]
+  - [[#switching-between-windows][Switching between windows]]
+  - [[#spawn-programs][Spawn programs]]
+  - [[#move-windows][Move windows]]
+  - [[#resize-windows][Resize windows]]
+  - [[#misc][Misc.]]
+  - [[#media-keys][Media Keys]]
+  - [[#compile-keybinds][Compile keybinds]]
+  - [[#switch-vtswayland][Switch VTs(wayland)]]
+  - [[#workspaces-and-moving-windows-to-workspaces][Workspaces and moving windows to workspaces]]
+- [[#layouts][Layouts]]
+- [[#screens-widgets-and-wallpaper][Screens, widgets, and wallpaper]]
+- [[#floating-windows-and-window-rules][Floating windows and window rules]]
+- [[#wayland-backend-optimizations][Wayland backend optimizations]]
+- [[#idle-inhibitorstimers][Idle inhibitors/timers]]
+- [[#wm-nameneeded-for-java-apps-like-astroimagej-to-work-well][WM Name(needed for java apps like astroimagej to work well)]]
 
 * Qtile Default Imports
 #+begin_src python

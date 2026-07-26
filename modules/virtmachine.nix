@@ -1,11 +1,11 @@
 { config, lib, pkgs, ... }:
 {
    programs.dconf.enable = true;
+   programs.virt-manager.enable = true;
 
-   users.users.pranav.extraGroups = [ "libvirtd" ];
+   users.users.pranav.extraGroups = [ "libvirtd" "kvm" ];
 
    environment.systemPackages = with pkgs; [
-      virt-manager
       virt-viewer
       spice
       spice-gtk
@@ -14,10 +14,10 @@
 
    virtualisation = {
       libvirtd = {
-	 enable = true;
-	 qemu = {
-	    swtpm.enable = true;
-	 };
+        enable = true;
+        qemu = {
+          swtpm.enable = true;
+        };
       };
       spiceUSBRedirection.enable = true;
    };

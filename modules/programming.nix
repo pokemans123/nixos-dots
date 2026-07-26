@@ -25,7 +25,6 @@
     stylua
     lua-language-server
     bash-language-server
-    tmux
     vscodium
     zed-editor
     nixpkgs-fmt

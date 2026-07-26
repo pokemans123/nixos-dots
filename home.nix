@@ -10,9 +10,9 @@ let
     kitty = "kitty";
     rofi = "rofi";
     fastfetch = "fastfetch";
-    tmux = "tmux";
     qtile = "qtile";
     alacritty = "alacritty";
+    mango = "mango";
   };
 in
 
@@ -31,6 +31,7 @@ in
      credential.helper = "store";
     };
   };
+
   home.stateVersion = "26.05";
   # services.polkit-gnome.enable = true;
   services.udiskie = {
@@ -38,6 +39,7 @@ in
     automount = true;
     notify = true;
   };
+
   programs.zsh = {
     enable = true;
     oh-my-zsh = {
@@ -79,6 +81,7 @@ in
       };
     };
   };
+
   programs.onlyoffice = {
     enable = true;
     settings = {

@@ -6,7 +6,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    '("4594d6b9753691142f02e67b8eb0fda7d12f6cc9f1299a49b819312d6addad1d" default))
- '(org-agenda-files '("~/org/agenda.org"))
+ '(org-agenda-files '("~/org"))
  '(package-selected-packages '(eglot simple-httpd)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

@@ -1,11 +1,3 @@
-// This config is in the KDL format: https://kdl.dev
-// "/-" comments out the following node.
-// Check the wiki for a full description of the configuration:
-// https://niri-wm.github.io/niri/Configuration:-Introduction
-
-// Input device configuration.
-// Find the full list of options on the wiki:
-// https://niri-wm.github.io/niri/Configuration:-Input
 input {
     keyboard {
         xkb {
@@ -400,8 +392,6 @@ binds {
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn-sh "noctalia msg session lock"; }
     Mod+B hotkey-overlay-title="Open a Browser: zen" { spawn "zen"; }
     Mod+E hotkey-overlay-title="Open a file exploer: nautilus" { spawn "nautilus"; }
-    Mod+P hotkey-overlay-title="Open up projects in Qmacs" {spawn-sh "~/nixos-dots/emacs-projects.sh"; }
-    Mod+Alt+P hotkey-overlay-title="Emacs everywhere" {spawn-sh "emacsclient --eval '(emacs-everywhere)'"; }
 
     Mod+C hotkey-overlay-title="Quick Captures" {spawn-sh "~/nixos-dots/quick-captures.sh"; }
 
@@ -494,9 +484,9 @@ binds {
     // And you can also move a whole workspace to another monitor:
     // Mod+Shift+Ctrl+Left  { move-workspace-to-monitor-left; }
     // ...
-    Mod+Tab { spawn-sh "noctalia msg panel-toggle control-center"; }
+    Mod+Tab hotkey-overlay-title="Open control center" { spawn-sh "noctalia msg panel-toggle control-center"; }
 
-    Mod+W { spawn-sh "noctalia msg panel-toggle wallpaper"; }
+    Mod+W  hotkey-overlay-title="Change wallpaper" { spawn-sh "noctalia msg panel-toggle wallpaper"; }
 
     Mod+Page_Down      { focus-workspace-down; }
     Mod+Page_Up        { focus-workspace-up; }
@@ -618,7 +608,7 @@ binds {
     // Center all fully visible columns on screen.
     Mod+Ctrl+C { center-visible-columns; }
 
-    Mod+S { spawn-sh "noctalia msg settings-toggle"; }
+    Mod+S hotkey-overlay-title="Open Noctalia Settings" { spawn-sh "noctalia msg settings-toggle"; }
 
     // Finer width adjustments.
     // This command can also:
@@ -653,7 +643,7 @@ binds {
     // Mod+Shift+Space { switch-layout "prev"; }
 
     Print { spawn-sh "/etc/profiles/per-user/pranav/bin/screenshot";}
-    Super+Shift+S { spawn-sh "/run/current-system/sw/bin/screenshot";}
+    Super+Shift+S hotkey-overlay-title="Screenshot" { spawn-sh "/run/current-system/sw/bin/screenshot";}
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
 
