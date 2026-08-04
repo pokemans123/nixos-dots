@@ -4,6 +4,14 @@
   ...
 }:
 {
+
+  programs.mpv = {
+    enable = true;
+    scripts = with pkgs.mpvScripts; [
+      mpris
+      manga-reader
+    ];
+  };
   home.packages = with pkgs; [
     thunar
     nautilus
@@ -17,7 +25,5 @@
     unzip
     unzrip
     shotwell
-    mpv
-    mpvScripts.manga-reader
   ];
 }

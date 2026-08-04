@@ -15,7 +15,6 @@
   # Configure network connections interactively with nmcli or nmtui.
   networking.networkmanager.enable = true;
   services.openssh.enable = true;
-  services.gnome.gnome-keyring.enable = lib.mkForce false;
 
   # Set your time zone.
   time.timeZone = "America/New_York";
@@ -51,9 +50,9 @@
   };
   nixpkgs.config = {
     allowUnfree = true;
-    permittedInsecurePackages = [
-      "electron-40.10.5"
-    ];
+    # permittedInsecurePackages = [
+    #   "electron-40.10.5"
+    # ];
   };
 
   nix.settings.experimental-features = [

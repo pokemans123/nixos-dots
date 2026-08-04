@@ -4,7 +4,7 @@ let
   dotfiles = "${config.home.homeDirectory}/nixos-dots/config";
   configs = {
     nvim = "nvim";
-    niri = "niri";
+    # niri = "niri";
     hypr = "hypr";
     i3 = "i3";
     kitty = "kitty";
@@ -32,8 +32,9 @@ in
     };
   };
 
+  services.gnome-keyring.enable = true;
+
   home.stateVersion = "26.05";
-  # services.polkit-gnome.enable = true;
   services.udiskie = {
     enable = true;
     automount = true;
@@ -69,18 +70,8 @@ in
     '';
 
   };
-  programs.keepassxc = {
-    enable = true;
-    settings = {
-      FdoSecrets.Enabled = true;
-      Browser = {
-        Enabled = true;
-        AlwaysAllowAccess = true;
-        AlwaysAllowUpdate = true;
-        HttpAuthPermission = true;
-      };
-    };
-  };
+home.file.".config/net.imput.helium/NativeMessagingHosts/org.keepassxc.keepassxc_browser.json".source =
+  "${pkgs.keepassxc}/lib/mozilla/native-messaging-hosts/org.keepassxc.keepassxc_browser.json";
 
   programs.onlyoffice = {
     enable = true;
@@ -98,10 +89,12 @@ in
 
   home.packages = with pkgs; [
     libreoffice-fresh
+    gcr
     xournalpp
     fastfetch
     nitch
     rofi
+    keepassxc
     nwg-look
     candy-icons
     pywalfox-native
@@ -115,9 +108,13 @@ in
     gtk2
     localsend
     gocryptfs
-    thunderbird
     btop
     inputs.astroimagej.packages.${pkgs.system}.astroimagej
+    inputs.helium.packages.${pkgs.system}.default
+    rquickshare
+    scrcpy
+    android-tools
+    usbutils
     (pkgs.writeShellApplication {
       name = "ns";
       runtimeInputs = with pkgs; [

@@ -6,4 +6,6 @@ configuration {
     terminal: "kitty";
     case-sensitive: false;
 }
-@theme "~/.config/rofi/themes/sane.rasi"
+//@theme "~/.config/rofi/themes/sane.rasi"
+
+@theme "/home/pranav/.config/rofi/themes/noctalia.rasi"

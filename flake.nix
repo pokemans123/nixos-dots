@@ -19,8 +19,14 @@
       url = "github:pokemans123/astroimagej-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    helium = {
+      url = "github:oxcl/nix-flake-helium-browser";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -33,6 +39,12 @@
       url = "github:niri-wm/niri";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    mangowm = {
+      url = "github:mangowm/mango";
+      inputs.nixpkgs.follows="nixpkgs-unstable";
+    };
+
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -66,6 +78,7 @@
           ./modules/wayland.nix
           ./modules/sdr.nix
           ./modules/syncthing.nix
+          ./modules/secrets.nix
           home-manager.nixosModules.home-manager
           {
             home-manager = {

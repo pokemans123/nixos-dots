@@ -158,13 +158,19 @@
   ;; Capture templates
   (setq org-capture-templates
         '(("t" "Todo" entry
-           (file+headline "~/org/captures.org" "Todo")
+           (file+headline "~/org/agenda.org" "Todo")
            "* TODO %^{Task}\n:PROPERTIES:\n:CREATED: %U\n:CAPTURED: %a\n:END:\n%?")
 
           ("e" "Event" entry
            (file+headline "~/org/agenda.org" "Events")
-           "* TODO %^{Event} :event: \n%^{SCHEDULED}T\n:PROPERTIES:\n:CREATED: %U\n:CAPTURED: %a\n:CONTACT:\n:END:\n%?")
-
+           "* TODO %^{Event} :event:
+SCHEDULED: %^T
+:PROPERTIES:
+:CREATED: %U
+:CAPTURED: %a
+:CONTACT:
+:END:
+%?")
           ("p" "Project" entry
            (file+headline "~/org/longterm.org" "Projects")
            "* PROJ %^{Project name}\n:PROPERTIES:\n:CREATED: %U\n:CAPTURED: %a\n:END:\n** TODO %?")
@@ -175,7 +181,11 @@
 
           ("b" "Bookmark" entry
            (file+headline "~/org/bookmarks.org" "Bookmarks")
-           "** [[%^{URL}][%^{Title}]]\n:PROPERTIES:\n:CREATED: %U\n:TAGS: %(org-capture-bookmark-tags)\n:END:\n\n"
+           "** [[%^{URL}][%^{Title}]] %^g
+:PROPERTIES:
+:CREATED: %U
+:END:
+"
            :empty-lines 0)
 
           ("n" "Note" entry
@@ -283,3 +293,9 @@
         org-roam-ui-open-on-start t))
 (use-package! org-fragtog
   :hook (org-mode . org-fragtog-mode))
+
+(after! mu4e
+  (setq mu4e-maildir "~/Mail"
+        mu4e-get-mail-command "mbsync -a"
+        mu4e-update-interval 300
+        mu4e-compose-signature nil))
