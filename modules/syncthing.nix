@@ -14,4 +14,9 @@ in
  environment.systemPackages = with pkgs.emacsPackages; [
    syncthing
   ];
+
+
+  services.tailscale = {
+   enable = true;
+  };
 }

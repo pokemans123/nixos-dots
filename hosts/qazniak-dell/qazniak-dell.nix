@@ -25,6 +25,9 @@
 
   services.syncthing = {
     enable = true;
+    user = "manager";
+    dataDir = "/home/manager";
+    configDir = "/home/manager/.config/syncthing";
   };
 
   nix.settings.experimental-features = [
