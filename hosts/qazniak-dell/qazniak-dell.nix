@@ -32,7 +32,7 @@
    enable = true;
   };
 
-  users.users.pranav = {
+  users.users.manager = {
     isNormalUser = true;
     extraGroups = [
       "wheel"
@@ -45,12 +45,13 @@
       "uinput"
     ];
 
-    hardware.uinput.enable = true;
     shell = pkgs.zsh;
     packages = with pkgs; [
       tree
     ];
   };
+
+  programs.zsh.enable = true;
 
   hardware.bluetooth.enable = true;
   services.upower.enable = true;
