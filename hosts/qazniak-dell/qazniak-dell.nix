@@ -15,29 +15,49 @@
   boot.kernelPackages = pkgs.linuxPackages;
   networking.hostName = "qazniak-dell"; # Define your hostname.
 
+  networking.networkmanager.enable = true;
+
+  services.openssh.enable = true;
+
+  time.timeZone = "America/New_York";
+
+  i18n.defaultLocale = "en_US.UTF-8";
+
   services.syncthing = {
     enable = true;
   };
+
 
   services.tailscale = {
    enable = true;
   };
 
-  services.pihole-ftl = {
-    enable = false;
-    dns.upstream = [ "9.9.9.9" "1.1.1.1" ];
-    lists = [
-      {
-        url = "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt";
-        type = "block";
-        enabled = true;
-        description = "hagezi blocklist";
-      }
+  users.users.pranav = {
+    isNormalUser = true;
+    extraGroups = [
+      "wheel"
+      "audio"
+      "networkmanager"
+      "video"
+      "storage"
+      "lpadmin"
+      "render"
+      "uinput"
+    ];
+
+    hardware.uinput.enable = true;
+    shell = pkgs.zsh;
+    packages = with pkgs; [
+      tree
     ];
   };
 
-  services.pihole-web = {
-    enable = false;
-    ports = [ "443s" ];
-  };
+  hardware.bluetooth.enable = true;
+  services.upower.enable = true;
+
+
+  environment.systemPackages = with pkgs; [
+    vim
+    neovim
+  ];
 }
