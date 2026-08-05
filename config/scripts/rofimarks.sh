@@ -65,7 +65,7 @@ END {
 selection=$(
 printf "%s\n" "$menu" |
 cut -f1 |
-rofi -dmenu -i -p "Bookmarks"
+rofi -dmenu -i  -p "Bookmarks"
 )
 
 [[ -z "$selection" ]] && exit

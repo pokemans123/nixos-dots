@@ -1,10 +1,10 @@
 * {
-  bg: #0e1415;
-  bg-alt: #1a2121;
-  fg: #dde4e4;
-  accent: #80d4d9;
-  accent-fg: #003739;
-  border: #899393;
+  bg: #0c141b;
+  bg-alt: #182127;
+  fg: #dbe3ed;
+  accent: #4fdbd1;
+  accent-fg: #003734;
+  border: #8193a2;
 }
 
 window {
@@ -38,6 +38,11 @@ listview {
   background-color: transparent;
   spacing: 4px;
   lines: 8;
+}
+
+textbox {
+  background-color: @bg-alt;
+  text-color: @fg;
 }
 
 element {

@@ -105,20 +105,6 @@
           ./configuration.nix
           ./hosts/qazniak-dell/hardware-configuration.nix
           ./hosts/qazniak-dell/qazniak-dell.nix
-          ./modules/xorg.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.pranav = import ./home.nix;
-              extraSpecialArgs = {
-                inherit inputs;
-              };
-              backupFileExtension = "backup";
-
-            };
-          }
         ];
       };
     };

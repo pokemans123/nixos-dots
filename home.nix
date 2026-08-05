@@ -64,6 +64,9 @@ in
             nrs() {
       	 sudo nixos-rebuild switch --flake ~/nixos-dots#"$1"
             }
+            define() {
+                     curl dict://dict.org/d:"$1"
+            }
             fastfetch -c ~/.config/fastfetch/config13.jsonc
 	    nitch
 	    export PATH="$HOME/.config/emacs/bin:$PATH"
