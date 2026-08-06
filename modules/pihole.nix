@@ -3,6 +3,15 @@
 {
   services.pihole-ftl = {
     enable = true;
+
+    openFirewallDNS = true;
+
+    settings = {
+      dns = {
+        listeningMode = "SINGLE";
+        upstreams = [ "9.9.9.9" "1.1.1.1" ];
+      }
+    };
     # dns.upstreams = [ "9.9.9.9" "1.1.1.1" ];
     lists = [    # Lists can be added via URL
       {
