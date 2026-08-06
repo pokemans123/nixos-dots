@@ -105,6 +105,7 @@
           ./hosts/qazniak-dell/hardware-configuration.nix
           ./hosts/qazniak-dell/qazniak-dell.nix
           ./modules/searx.nix
+          ./modules/pihole.nix
         ];
       };
     };
