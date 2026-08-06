@@ -32,5 +32,6 @@ in
   };
   home.packages = with pkgs; [
     ryubing
+    stremio-linux-shell
   ];
 }
