@@ -35,6 +35,11 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
+    nix-flatpak = {
+      url = "github:gmodena/nix-flatpak/?ref=latest";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     niri-nix = {
       url = "github:niri-wm/niri";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -79,6 +84,7 @@
           ./modules/sdr.nix
           ./modules/syncthing.nix
           ./modules/secrets.nix
+          ./modules/flatpak.nix
           home-manager.nixosModules.home-manager
           {
             home-manager = {

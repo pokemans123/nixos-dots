@@ -136,6 +136,7 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     neovim
+    jq
     nixd
     git
     ntfs3g
@@ -166,6 +167,7 @@
     nerd-fonts.monofur
     nerd-fonts.anonymice
     nerd-fonts.iosevka
+    nerd-fonts.daddy-time-mono
     redhat-official-fonts
     corefonts
     vista-fonts

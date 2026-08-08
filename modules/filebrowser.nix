@@ -25,5 +25,6 @@
     unzip
     unzrip
     shotwell
+    thunderbird
   ];
 }

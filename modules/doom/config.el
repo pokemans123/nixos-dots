@@ -299,3 +299,33 @@ SCHEDULED: %^T
         mu4e-get-mail-command "mbsync -a"
         mu4e-update-interval 300
         mu4e-compose-signature nil))
+
+(use-package colorful-mode
+  ;; :diminish
+  ;; :ensure t ; Optional
+  :custom
+  (colorful-use-prefix t)
+  (colorful-only-strings 'only-prog)
+  (css-fontify-colors nil)
+  :config
+  (global-colorful-mode t)
+  (add-to-list 'global-colorful-modes 'helpful-mode))
+
+(defun my/org-capture-frame ()
+  (interactive)
+  (let ((frame
+         (make-frame
+          '((name . "org-capture")
+            (org-capture-frame . t)
+            (minibuffer . t)
+            (width . 80)
+            (height . 20)
+            (undecorated . t)))))
+    (select-frame-set-input-focus frame)
+    (org-capture)))
+
+(defun my/org-capture-delete-frame ()
+  (when (frame-parameter nil 'org-capture-frame)
+    (delete-frame)))
+
+(add-hook 'org-capture-after-finalize-hook #'my/org-capture-delete-frame)

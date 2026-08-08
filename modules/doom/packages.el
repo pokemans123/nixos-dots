@@ -18,6 +18,7 @@
 (package! org-roam-ui)
 
 (package! org-fragtog)
+(package! colorful-mode)
 
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:

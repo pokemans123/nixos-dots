@@ -26,6 +26,12 @@
         enabled = true;
         description = "tracker blocklist";
       }
+      {
+        url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts";
+        type = "block";
+        enabled = true;
+        description = "Steven Black";
+      }
     ];
   };
 
