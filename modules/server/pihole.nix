@@ -41,6 +41,6 @@
 
   services.pihole-web = {
     enable = true;
-    ports = [ "8080" ];
+    ports = [ "8081" ];
   };
 }

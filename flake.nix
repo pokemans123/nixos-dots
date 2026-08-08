@@ -110,9 +110,10 @@
         modules = [
           ./hosts/qazniak-dell/hardware-configuration.nix
           ./hosts/qazniak-dell/qazniak-dell.nix
-          ./modules/searx.nix
-          ./modules/pihole.nix
-          ./modules/caddy.nix
+          ./modules/server/searx.nix
+          ./modules/server/pihole.nix
+          ./modules/server/caddy.nix
+          ./modules/server/dashy.nix
         ];
       };
     };

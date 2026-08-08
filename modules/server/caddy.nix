@@ -14,9 +14,10 @@
     virtualHosts."pihole.qazniak-dell" = {
       extraConfig = ''
         tls internal
-        reverse_proxy 127.0.0.1:8080 {
+        reverse_proxy 127.0.0.1:8081 {
         }
       '';
     };
+
   };
 }
