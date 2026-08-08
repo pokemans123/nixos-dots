@@ -113,7 +113,7 @@
           ./modules/server/searx.nix
           ./modules/server/pihole.nix
           ./modules/server/caddy.nix
-          ./modules/server/dashy.nix
+          ./modules/server/vaultwarden.nix
         ];
       };
     };
