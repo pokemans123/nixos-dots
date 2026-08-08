@@ -6,30 +6,74 @@
 
     settings = {
       appConfig = {
+        cssThemes = [
+          "example-theme-1"
+          "example-theme-2"
+        ];
+        enableFontAwesome = true;
+        fontAwesomeKey = "e9076c7025";
         theme = "thebe";
       };
-
-      pageInfo  = {
-        description  = "My Homelab";
-
+      pageInfo = {
+        description = "My Awesome Dashboard";
         navLinks = [
           {
-            path = "https://search.qazniak-dell";
-            title = "SearXNG";
+            path = "/";
+            title = "Home";
           }
-
           {
-            path = "https://pihole.qazniak-dell";
-            title = "PiHole";
+            path = "https://example.com";
+            title = "Example 1";
           }
-
           {
-            path = "https://console.tailscale.com";
-            title = "Tailscale";
+            path = "https://example.com";
+            title = "Example 2";
           }
         ];
+        title = "Dashy";
       };
-
+      sections = [
+        {
+          displayData = {
+            collapsed = true;
+            cols = 2;
+            customStyles = "border: 2px dashed red;";
+            itemSize = "large";
+          };
+          items = [
+            {
+              backgroundColor = "#0079ff";
+              color = "#00ffc9";
+              description = "Source code and documentation on GitHub";
+              icon = "fab fa-github";
+              target = "sametab";
+              title = "Source";
+              url = "https://github.com/Lissy93/dashy";
+            }
+            {
+              description = "View currently open issues, or raise a new one";
+              icon = "fas fa-bug";
+              title = "Issues";
+              url = "https://github.com/Lissy93/dashy/issues";
+            }
+            {
+              description = "Live Demo #1";
+              icon = "fas fa-rocket";
+              target = "iframe";
+              title = "Demo 1";
+              url = "https://dashy-demo-1.as93.net";
+            }
+            {
+              description = "Live Demo #2";
+              icon = "favicon";
+              target = "newtab";
+              title = "Demo 2";
+              url = "https://dashy-demo-2.as93.net";
+            }
+          ];
+          name = "Getting Started";
+        }
+      ];
     };
   };
 }
