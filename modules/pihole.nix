@@ -11,8 +11,8 @@
         listeningMode = "ALL";
         upstreams = [ "9.9.9.9" "1.1.1.1" ];
         hosts = [
-          "100.86.13.14 search.qazniak.dell"
-          "100.86.13.14 pihole.qazniak.dell"
+          "100.86.13.14 search.qazniak-dell"
+          "100.86.13.14 pihole.qazniak-dell"
         ];
       };
     };
