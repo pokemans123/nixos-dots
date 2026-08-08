@@ -27,5 +27,12 @@
       '';
     };
 
+    virtualHosts."home.qazniak-dell" = {
+      extraConfig = ''
+        tls internal
+        root * ${config.services.dashy.package}
+        file_server
+      '';
+    };
   };
 }

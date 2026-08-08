@@ -14,6 +14,7 @@
           "100.86.13.14 search.qazniak-dell"
           "100.86.13.14 pihole.qazniak-dell"
           "100.86.13.14 passwords.qazniak-dell"
+          "100.86.13.14 home.qazniak-dell"
         ];
       };
     };

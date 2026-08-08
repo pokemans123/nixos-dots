@@ -114,6 +114,7 @@
           ./modules/server/pihole.nix
           ./modules/server/caddy.nix
           ./modules/server/vaultwarden.nix
+          ./modules/server/dashy.nix
         ];
       };
     };

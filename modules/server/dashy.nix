@@ -5,73 +5,47 @@
     enable = true;
 
     settings = {
-      appConfig = {
-        cssThemes = [
-          "example-theme-1"
-          "example-theme-2"
-        ];
-        enableFontAwesome = true;
-        fontAwesomeKey = "e9076c7025";
-        theme = "thebe";
-      };
       pageInfo = {
-        description = "My Awesome Dashboard";
+        title = "My HomeLab";
+        description = "Homelab Dashboard";
         navLinks = [
-          {
-            path = "/";
-            title = "Home";
-          }
-          {
-            path = "https://example.com";
-            title = "Example 1";
-          }
-          {
-            path = "https://example.com";
-            title = "Example 2";
-          }
+          { title = "My NixOS Repo"; path = "https://github.com/pokemans123/nixos-dots"; }
+          { title = "My Github"; path = "https://github.com/pokemans123"; }
         ];
-        title = "Dashy";
       };
+
+      appConfig = {
+        theme = "dracula";
+      };
+
       sections = [
         {
-          displayData = {
-            collapsed = true;
-            cols = 2;
-            customStyles = "border: 2px dashed red;";
-            itemSize = "large";
-          };
+          name = "Networking";
           items = [
             {
-              backgroundColor = "#0079ff";
-              color = "#00ffc9";
-              description = "Source code and documentation on GitHub";
-              icon = "fab fa-github";
-              target = "sametab";
-              title = "Source";
-              url = "https://github.com/Lissy93/dashy";
-            }
-            {
-              description = "View currently open issues, or raise a new one";
-              icon = "fas fa-bug";
-              title = "Issues";
-              url = "https://github.com/Lissy93/dashy/issues";
-            }
-            {
-              description = "Live Demo #1";
-              icon = "fas fa-rocket";
-              target = "iframe";
-              title = "Demo 1";
-              url = "https://dashy-demo-1.as93.net";
-            }
-            {
-              description = "Live Demo #2";
-              icon = "favicon";
-              target = "newtab";
-              title = "Demo 2";
-              url = "https://dashy-demo-2.as93.net";
+              title = "Pi-hole";
+              description = "Ad-blocker and DNS recorder";
+              url = "https://pihole.qazniak-dell";
             }
           ];
-          name = "Getting Started";
+        }
+
+        {
+          name = "Utilities";
+          items = [
+            {
+              title = "SearXNG";
+              description = "Custom search engine";
+              url = "https://search.qazniak-dell";
+              icon = "hl-searxng";
+            }
+            {
+              title = "Vaultwarden";
+              icon = "hl-bitwarden";
+              description = "Local hosted password manager";
+              url = "https://passwords.qazniak-dell";
+            }
+          ];
         }
       ];
     };
