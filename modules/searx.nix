@@ -6,7 +6,7 @@
     redisCreateLocally = true;
     environmentFile = "/home/manager/.searxng.env";
     settings.server = {
-      bind_address = "0.0.0.0";
+      bind_address = "::1";
     };
     settings.enabled_plugins = [
       "Basic Calculator"

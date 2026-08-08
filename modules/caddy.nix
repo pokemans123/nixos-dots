@@ -1,0 +1,22 @@
+{ config, lib, pkgs, ... }:
+
+{
+  services.caddy = {
+    enable = true;
+
+    virtualHosts."search.qazniak-dell" = {
+      extraConfig = ''
+        tls internal
+        reverse_proxy 127.0.0.1:8888
+      '';
+    };
+
+    virtualHosts."pihole.qazniak-dell" = {
+      extraConfig = ''
+        tls internal
+        reverse_proxy 127.0.0.1:8080 {
+        }
+      '';
+    };
+  };
+}
