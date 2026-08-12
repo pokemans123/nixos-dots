@@ -20,4 +20,8 @@
       intel-vaapi-driver
     ];
   };
+
+  security.pki.certificateFiles = [
+    /home/pranav/Downloads/root.crt
+  ];
 }

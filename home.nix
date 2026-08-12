@@ -10,7 +10,7 @@ let
     kitty = "kitty";
     rofi = "rofi";
     fastfetch = "fastfetch";
-    qtile = "qtile";
+    # qtile = "qtile";
     alacritty = "alacritty";
     mango = "mango";
   };

@@ -329,3 +329,7 @@ SCHEDULED: %^T
     (delete-frame)))
 
 (add-hook 'org-capture-after-finalize-hook #'my/org-capture-delete-frame)
+
+(use-package! direnv
+  :config
+  (direnv-mode))

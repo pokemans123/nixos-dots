@@ -20,6 +20,8 @@
 (package! org-fragtog)
 (package! colorful-mode)
 
+(package! direnv)
+
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;; (package! some-package)

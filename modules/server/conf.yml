@@ -1,0 +1,52 @@
+ appConfig:
+  theme: oblivion
+  language: en
+pageInfo:
+  title: My Homelab
+  description: My Personal Homelab
+  navLinks:
+    - title: GitHub
+      path: https://github.com/pokemans123
+    - title: Documentation
+      path: https://dashy.to/docs
+sections:
+  - name: Networking
+    icon: fas fa-rocket
+    items:
+      - title: Pi-Hole
+        description: DNS Adblocker
+        icon: si-pihole
+        url: https://pihole.qazniak-dell
+        id: 0_1064_pihole
+      - title: Tailscale
+        description: Private VPN
+        icon: si-tailscale
+        url: https://console.tailscale.com
+  - name: Utilities
+    icon: fas fa-wrench
+    displayData:
+      itemSize: large
+    items:
+      - title: SearXNG
+        description: Custom Search Engine
+        icon: si-searxng
+        url: https://search.qazniak-dell
+        id: 0_956_searxng
+      - title: VaultWarden
+        description: Locally Hosted Password Manager
+        icon: si-bitwarden
+        url: https://passwords.qazniak-dell
+  - name: Latest Updates
+    icon: fas fa-code-branch
+    displayData:
+      cols: 1
+      rows: 3
+      cutToHeight: true
+    widgets:
+      - type: rss-feed
+        options:
+          rssUrl: https://github.com/lissy93/dashy/releases.atom
+          limit: 5
+        id: 0_1379_rssfeed
+    items: []
+pages: []

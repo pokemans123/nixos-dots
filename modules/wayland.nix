@@ -16,7 +16,11 @@
 
   programs.mango.enable = true;
 
-
+  programs.foot = {
+    enable = true;
+    enableZshIntegration = true;
+    xdg.serverAutostart = true;
+  };
 
 
   environment.systemPackages= with pkgs; [
