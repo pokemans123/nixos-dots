@@ -16,6 +16,11 @@
   networking.networkmanager.enable = true;
   services.openssh.enable = true;
 
+  security.doas = {
+    enable = true;
+    wheelNeedsPassword = true;
+  };
+
   # Set your time zone.
   time.timeZone = "America/New_York";
 
@@ -128,6 +133,12 @@
         port = 7654;
       };
     };
+
+    addressbook.subscriptions = [
+      "http://inr.i2p/export/alive-hosts.txt"
+      "http://i2p-projekt.i2p/hosts.txt"
+      "http://stats.i2p/cgi-bin/newhosts.txt"
+    ];
     enableIPv4 = true;
   };
 
@@ -136,13 +147,13 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     neovim
+    slurp
     jq
     nixd
     git
     ntfs3g
     wget
     kitty
-    alacritty
     bluez
     bluez-tools
     gvfs
@@ -168,6 +179,7 @@
     nerd-fonts.anonymice
     nerd-fonts.iosevka
     nerd-fonts.daddy-time-mono
+    nerd-fonts.sauce-code-pro
     redhat-official-fonts
     corefonts
     vista-fonts

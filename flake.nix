@@ -81,7 +81,6 @@
           ./hosts/qazniak/qazniak.nix
 	        ./modules/virtmachine.nix
           ./modules/wayland.nix
-          ./modules/sdr.nix
           ./modules/syncthing.nix
           ./modules/secrets.nix
           ./modules/flatpak.nix

@@ -22,12 +22,19 @@
     xdg.serverAutostart = true;
   };
 
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    wlr.enable = true;
+  };
+
+  systemd.user.services.xdg-desktop-portal-wlr.path = [ pkgs.rofi ];
+
 
   environment.systemPackages= with pkgs; [
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     xwayland-satellite
     hyprcursor
-    xdg-desktop-portal
     xdg-desktop-portal-wlr
     xdg-desktop-portal-hyprland
     rose-pine-hyprcursor

@@ -11,8 +11,8 @@ let
     rofi = "rofi";
     fastfetch = "fastfetch";
     # qtile = "qtile";
-    alacritty = "alacritty";
     mango = "mango";
+    foot = "foot";
   };
 in
 
@@ -62,7 +62,7 @@ in
     syntaxHighlighting.enable = true;
     initContent = ''
             nrs() {
-      	 sudo nixos-rebuild switch --flake ~/nixos-dots#"$1"
+      	 doas nixos-rebuild switch --flake ~/nixos-dots#"$1"
             }
             define() {
                      curl dict://dict.org/d:"$1"
@@ -109,8 +109,8 @@ home.file.".config/net.imput.helium/NativeMessagingHosts/org.keepassxc.keepassxc
     lsd
     bat
     gtk2
-    localsend
     gocryptfs
+    localsend
     btop
     inputs.astroimagej.packages.${pkgs.system}.astroimagej
     inputs.helium.packages.${pkgs.system}.default

@@ -148,6 +148,10 @@
       "k k"
       #'eldoc-doc-buffer)
 
+(map! :leader
+      :desc "Grep for strings"
+      "f g"
+      #'find-grep-dired)
 
 (after! pdf-tools (add-hook 'pdf-view-mode-hook #'pdf-view-restore-mode))
 
