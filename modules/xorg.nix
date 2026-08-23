@@ -6,7 +6,7 @@
     autoRepeatDelay = 200;
     autoRepeatInterval = 35;
     windowManager.i3.enable = true;
-    windowManager.qtile.enable = true;
+    # windowManager.qtile.enable = true;
   };
   services.picom = {
     enable = true;

@@ -1,22 +1,23 @@
 { pkgs, inputs, ... }:
 
 let
-  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
+  # spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
+  unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
 in
 {
-  imports = [
-   inputs.spicetify-nix.homeManagerModules.spicetify
-  ];
-  programs.spicetify = {
-    enable = true;
-    enabledExtensions = with spicePkgs.extensions; [
-      adblockify
-      hidePodcasts
-      shuffle
-    ];
-    theme = spicePkgs.themes.catppuccin;
-    colorScheme = "mocha";
-  };
+  # imports = [
+  #  inputs.spicetify-nix.homeManagerModules.spicetify
+  # ];
+  # programs.spicetify = {
+  #   enable = true;
+  #   enabledExtensions = with spicePkgs.extensions; [
+  #     adblockify
+  #     hidePodcasts
+  #     shuffle
+  #   ];
+  #   theme = spicePkgs.themes.catppuccin;
+  #   colorScheme = "mocha";
+  # };
   programs.vesktop = {
     enable = true;
     settings = {
@@ -30,8 +31,12 @@ in
       baseTheme = "catppuccinMocha";
     };
   };
+
+
   home.packages = with pkgs; [
     ryubing
-    stremio-linux-shell
+    pear-desktop
+    inputs.ytm-player.packages.${system}.default
+    unstable.yt-dlp
   ];
 }

@@ -1,0 +1,7 @@
+# [theme.templates.user.oxwm]
+# input_path = "$XDG_CONFIG_HOME/noctalia/templates/oxwm.lua"
+# output_path = "$XDG_CONFIG_HOME/oxwm/colors.lua"
+
+[theme.templates.user.rofi]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/rofi.rasi"
+output_path = "$XDG_CONFIG_HOME/rofi/themes/noctalia.rasi"

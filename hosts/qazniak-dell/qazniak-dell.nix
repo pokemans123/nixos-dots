@@ -45,6 +45,8 @@
     HandleLidSwitchDocked = "ignore";
   };
 
+  services.getty.autologinUser = "manager";
+
   users.users.manager = {
     isNormalUser = true;
     extraGroups = [
@@ -74,5 +76,7 @@
   environment.systemPackages = with pkgs; [
     vim
     neovim
+    python313
+    git
   ];
 }

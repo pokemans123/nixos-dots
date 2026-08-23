@@ -1,0 +1,570 @@
+config_version = 12
+
+[backdrop]
+blur_intensity = 0.62999998591840267
+enabled = true
+
+[bar]
+order = [ "island", "dock", "minimal" ]
+
+    [bar.dock]
+    auto_hide = true
+    background_opacity = 0.68999998457729816
+    center = [ "wallpaper", "Projects", "configure_system", "zen", "btn" ]
+    enabled = true
+    end = [ "clipboard" ]
+    font_family = "JetBrainsMono NF"
+    font_weight = 800
+    icon_color = "primary"
+    layer = "overlay"
+    margin_edge = 5
+    margin_ends = 200
+    position = "left"
+    radius = 40
+    reserve_space = false
+    scale = 1.9500000216066837
+    start = [ "weather", "tray" ]
+    thickness = 50
+    widget_spacing = 12
+
+        [bar.dock.monitor.eDP-1]
+        position = "right"
+
+    [bar.island]
+    background_opacity = 0.79999998211860657
+    center = [ "control-center", "clock", "workspaces", "battery", "recorder_2", "widget" ]
+    end = []
+    margin_edge = 15
+    margin_ends = 590
+    radius = 45
+    reserve_space = false
+    scale = 1.2000000104308128
+    start = []
+    widget_spacing = 10
+
+        [bar.island.dead_zone.actions]
+        right = "exec noctalia msg panel-toggle control-center audio"
+
+    [bar.minimal]
+    center = [ "control-center", "workspaces", "battery", "clock" ]
+    concave_edge_corners = false
+    enabled = false
+    end = [ "group:g1", "network", "volume", "session" ]
+    font_family = "Red Hat Display"
+    margin_ends = 0
+    radius = 0
+    scale = 1.300000011920929
+    start = []
+
+        [[bar.minimal.capsule_group]]
+        accordion = false
+        accordion_direction = "end"
+        enabled = true
+        fill = "primary"
+        id = "g1"
+        members = [ "tray", "notifications", "clipboard" ]
+        opacity = 0.25
+        padding = 6.0
+
+[calendar]
+enabled = true
+
+    [calendar.account.personal_google]
+    type = "google"
+
+[desktop_widgets]
+schema_version = 2
+widget_order = [ "desktop-widget-0000000000000004", "desktop-widget-0000000000000005", "desktop-widget-0000000000000006" ]
+
+    [desktop_widgets.grid]
+    cell_size = 8
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget.desktop-widget-0000000000000004]
+    box_height = 976.0
+    box_width = 1224.0
+    cx = 252.0
+    cy = 256.0
+    output = "eDP-1"
+    placement_height = 1200.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "fancy_audio_visualizer"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000004.settings]
+        background = false
+        background_opacity = 0.59999999999999998
+        background_radius = 0
+        bar_width = 0.5
+        bloom_intensity = 0.55000000000000004
+        inner_diameter = 0.5
+        ring_opacity = 0.70000000000000007
+        rotation_speed = 1.5
+        sensitivity = 2.0
+        visualization_mode = "bars_rings"
+        wave_thickness = 1.1000000000000001
+
+    [desktop_widgets.widget.desktop-widget-0000000000000005]
+    box_height = 268.15234375
+    box_width = 331.15234375
+    cx = 1669.892578125
+    cy = 963.697265625
+    output = "eDP-1"
+    placement_height = 1200.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "clock"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000005.settings]
+        background = false
+        center_text = true
+        clock_style = "digital"
+        font_family = "DaddyTimeMono Nerd Font"
+        format = "{:%A\\n%b%e}"
+
+    [desktop_widgets.widget.desktop-widget-0000000000000006]
+    box_height = 312.0
+    box_width = 280.0
+    cx = 252.0
+    cy = 256.0
+    output = "eDP-1"
+    placement_height = 1200.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "clock"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000006.settings]
+        background = false
+        clock_style = "analog"
+        color = "secondary"
+
+[dock]
+background_opacity = 0.75999998301267624
+enabled = true
+inactive_opacity = 0.99999997764825821
+launcher_position = "start"
+magnification_scale = 1.3000000044703484
+pinned = [ "zen" ]
+radius = 47
+reserve_space = false
+shadow = false
+show_dots = true
+smart_auto_hide = true
+
+[hooks]
+wallpaper_changed = "echo $(noctalia msg wallpaper-get) > ~/nixos-dots/config/.wallpaper"
+
+[hot_corners]
+enabled = true
+
+    [hot_corners.bottom_right]
+    action = "command"
+    command = "~/nixos-dots/config/scripts/menu.sh"
+
+    [hot_corners.top_right]
+    action = "command"
+    command = "mmsg dispatch toggle_named_scratchpad,scratchterm,none,foot --app-id scratchterm"
+
+[keybinds]
+validate = [ "Return", "KP_Enter", "space" ]
+
+[location]
+address = "Freehold, NJ"
+
+[lockscreen]
+blurred_desktop = true
+tint_intensity = 0.48999998904764652
+
+[lockscreen_widgets]
+enabled = true
+schema_version = 2
+widget_order = [
+    "lockscreen-login-box@HDMI-A-1",
+    "lockscreen-login-box@winit",
+    "lockscreen-login-box@eDP-1",
+    "lockscreen-widget-0000000000000001",
+    "lockscreen-widget-0000000000000002",
+    "lockscreen-widget-0000000000000004",
+    "lockscreen-widget-0000000000000005",
+    "lockscreen-widget-0000000000000006",
+    "lockscreen-widget-0000000000000007"
+]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
+    box_height = 196.0
+    box_width = 720.0
+    cx = 941.0
+    cy = 900.0
+    output = "HDMI-A-1"
+    placement_height = 900.0
+    placement_width = 1600.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+    box_height = 196.0
+    box_width = 720.0
+    cx = 960.0
+    cy = 1078.0
+    output = "eDP-1"
+    placement_height = 1200.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@winit"]
+    box_height = 196.0
+    box_width = 720.0
+    cx = 476.0
+    cy = 1035.0
+    output = "winit"
+    placement_height = 0.0
+    placement_width = 0.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@winit".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
+    box_height = 224.0
+    box_width = 224.0
+    cx = 688.0
+    cy = 376.0
+    output = "eDP-1"
+    placement_height = 1200.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "clock"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000001.settings]
+        background = false
+        clock_style = "analog"
+        color = "error"
+        font_family = "FreeSans"
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000002]
+    box_height = 416.0
+    box_width = 528.0
+    cx = 1520.0
+    cy = 568.0
+    output = "eDP-1"
+    placement_height = 1200.0
+    placement_width = 1920.0
+    rotation = -0.0
+    type = "clock"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000002.settings]
+        background = false
+        background_opacity = 0.53000000000000003
+        background_radius = 30.0
+        color = "primary"
+        font_family = "DaddyTimeMono Nerd Font"
+        format = "{:%A\\n%B %d }"
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000004]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 431.0
+    cy = 226.5
+    output = "HDMI-A-1"
+    placement_height = 900.0
+    placement_width = 1600.0
+    rotation = 0.0
+    type = "clock"
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000005]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 1232.0
+    cy = 364.0
+    output = "HDMI-A-1"
+    placement_height = 900.0
+    placement_width = 1600.0
+    rotation = 0.0
+    type = "fancy_audio_visualizer"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000005.settings]
+        background = false
+        visualization_mode = "all"
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000006]
+    box_height = 224.0
+    box_width = 256.0
+    cx = 503.39999389648438
+    cy = 760.0
+    output = "eDP-1"
+    placement_height = 1200.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "fancy_audio_visualizer"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000006.settings]
+        background = false
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000007]
+    box_height = 544.0
+    box_width = 544.0
+    cx = 688.0
+    cy = 376.0
+    output = "eDP-1"
+    placement_height = 1200.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "fancy_audio_visualizer"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000007.settings]
+        background = false
+
+[osd]
+background_opacity = 0.97999997809529305
+offset_y = 24
+position = "top_right"
+scale = 1.300000011920929
+
+[plugin_settings."ezequiel/mango_layouts"]
+panel_open_near_click = true
+panel_placement = "attached"
+
+[plugin_settings."noctalia/screen_recorder"]
+directory = ""
+quality = "high"
+
+[plugins]
+enabled = [ "noctalia/screen_recorder", "ezequiel/mango_layouts", "thepunkoff/pomodoro" ]
+
+[shell]
+avatar_path = "/home/pranav/Pictures/Screenshots/pfp.png"
+font_family = "JetBrainsMono NF"
+polkit_agent = true
+settings_show_advanced = true
+time_format = "{:%-I:%M %p}"
+
+    [shell.launcher]
+    app_grid = true
+    show_app_actions = false
+
+    [shell.launcher.dmenu.entry.bookmarks]
+    command = "printf 'Select Bookmark'"
+    label="Bookmarks"
+    prefix=""
+    global = true
+    glyph = "terminal"
+    exec = "~/nixos-dots/config/scripts/rofimarks.sh"
+
+
+
+
+    [shell.panel]
+    open_near_click_wallpaper = true
+    transparency_mode = "glass"
+
+    [shell.screen_corners]
+    enabled = true
+
+    [[shell.session.actions]]
+    action = "lock"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "1"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "logout"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "2"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "lock_and_suspend"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "3"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "reboot"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "4"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "shutdown"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "5"
+    variant = "destructive"
+
+    [[shell.session.actions]]
+    action = "command"
+    command = "systemctl hibernate"
+    countdown_seconds = 0.0
+    enabled = true
+    glyph = "hibernate"
+    label = "Hibernate"
+    shortcut = "6"
+    variant = "default"
+
+[theme]
+builtin = "Tokyo-Night"
+community_palette = "Mizuki-Akiyama"
+custom_palette = "BlackEmber"
+mode = "dark"
+source = "community"
+wallpaper_scheme = "faithful"
+
+    [theme.templates]
+    builtin_ids = [ "btop", "emacs", "foot", "gtk3", "gtk4", "hyprland", "kitty", "mango" ]
+    community_ids = [ "pywalfox", "discord", "vscode", "zed", "yazi" ]
+
+[wallpaper]
+directory = "/home/pranav/Pictures/wallpapers"
+transition_duration = 3900
+
+    [wallpaper.default]
+    path = "/home/pranav/Pictures/wallpapers/mizuki/Mizuki-Akiyama-16.png"
+
+    [wallpaper.last]
+    path = "/home/pranav/Pictures/wallpapers/mizuki/Mizuki-Akiyama-16.png"
+
+    [wallpaper.monitors.HDMI-A-1]
+    path = "/home/pranav/Pictures/wallpapers/mizuki/Mizuki-Akiyama-16.png"
+
+    [wallpaper.monitors.eDP-1]
+    path = "/home/pranav/Pictures/wallpapers/mizuki/Mizuki-Akiyama-16.png"
+
+[weather]
+refresh_minutes = 15
+unit = "imperial"
+
+[widget.Projects]
+custom_image = "/etc/profiles/per-user/pranav/share/icons/candy-icons/apps/scalable/emacs.svg"
+tooltip = "Open up projects in Doom Emacs"
+type = "custom_button"
+
+    [widget.Projects.actions]
+    left = "exec ~/nixos-dots/emacs-projects.sh"
+
+[widget.battery]
+scale = 1.25
+
+[widget.btn]
+custom_color = "primary"
+type = "ezequiel/mango_layouts:btn"
+
+[widget.clock]
+format = "{:%-I:%M %p}"
+scale = 1.25
+tooltip_format = "{:%A, %m.%d.%Y }"
+
+[widget.configure_system]
+custom_image = "/run/current-system/sw/share/icons/hicolor/48x48/apps/nix-snowflake.png"
+tooltip = "Open up NixOS configuration"
+type = "custom_button"
+
+    [widget.configure_system.actions]
+    left = "exec emacsclient -c --eval '(dired \"~/nixos-dots\")'"
+
+[widget.control-center]
+custom_image = "/run/current-system/sw/share/icons/hicolor/64x64/apps/nix-snowflake.png"
+glyph = "snowflake"
+scale = 1.25
+
+[widget.launcher]
+color = "secondary"
+
+[widget.media]
+hide_when_no_media = true
+
+[widget.network]
+show_vpn_label = true
+
+[widget.privacy]
+enabled = true
+
+[widget.recorder]
+type = "noctalia/screen_recorder:recorder"
+
+[widget.recorder_2]
+type = "noctalia/screen_recorder:recorder"
+
+[widget.session]
+color = "error"
+
+[widget.tray]
+color = "error"
+drawer = true
+
+[widget.widget]
+type = "thepunkoff/pomodoro:widget"
+
+[widget.workspaces]
+active_pill_size = 2.0499999999999998
+capsule_opacity = 0.25
+capsule_radius = 19
+color = "secondary"
+empty_color = "on_tertiary"
+icon_color = "primary"
+scale = 1.6000000000000001
+show_labels = false
+
+[widget.zen]
+custom_image = "/etc/profiles/per-user/pranav/share/icons/candy-icons/apps/scalable/zen.svg"
+tooltip = "Launch Zen Browser"
+type = "custom_button"
+
+    [widget.zen.actions]
+    left = "exec zen"

@@ -10,9 +10,9 @@ let
     kitty = "kitty";
     rofi = "rofi";
     fastfetch = "fastfetch";
-    # qtile = "qtile";
     mango = "mango";
     foot = "foot";
+    noctalia = "noctalia";
   };
 in
 
@@ -48,6 +48,8 @@ in
       plugins = [
         "git"
         "z"
+        "foot"
+        "web-search"
       ];
       theme = "minimal";
     };
@@ -62,7 +64,7 @@ in
     syntaxHighlighting.enable = true;
     initContent = ''
             nrs() {
-      	 doas nixos-rebuild switch --flake ~/nixos-dots#"$1"
+      	 sudo nixos-rebuild switch --flake ~/nixos-dots#"$1"
             }
             define() {
                      curl dict://dict.org/d:"$1"

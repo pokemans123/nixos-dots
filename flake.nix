@@ -10,6 +10,16 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
+    umbriel = {
+      url = "github:noctalia-dev/umbriel";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
+    umbriel-portal = {
+      url = "github:noctalia-dev/xdg-desktop-portal-umbriel";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -50,10 +60,15 @@
       inputs.nixpkgs.follows="nixpkgs-unstable";
     };
 
-    spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+    ytm-player = {
+      url = "github:peternaame-boop/ytm-player";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+
+    # spicetify-nix = {
+    #   url = "github:Gerg-L/spicetify-nix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
   };
   outputs =
