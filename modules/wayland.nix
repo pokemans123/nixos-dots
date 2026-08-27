@@ -3,7 +3,6 @@
 {
   imports = [
     inputs.mangowm.nixosModules.mango
-    inputs.umbriel.nixosModules.default
   ];
   programs.hyprland = {
     enable = true;
@@ -16,7 +15,6 @@
   # };
 
   programs.mango.enable = true;
-  programs.umbriel.enable = true;
 
   programs.foot = {
     enable = true;

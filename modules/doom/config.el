@@ -106,26 +106,10 @@
 ;;   this file. Emacs searches the `load-path' when you load packages with
 ;;   `require' or `use-package'.
 ;; - `map!' for binding new keys
-(defun my/vterm-here ()
-  "Open vterm in current window."
-  (interactive)
-  (let ((default-directory (or (and buffer-file-name (file-name-directory buffer-file-name))
-                               default-directory))
-        (display-buffer-alist nil))  ; bypass all display rules
-    (pop-to-buffer-same-window (vterm "*vterm*"))))
-(map! :leader
-      :desc "Open terminal"
-      "t t" #'vterm
-      )
 (map! :leader
       "RET" #'(lambda ()
                 (interactive)
                 (find-file "~/org/bookmarks.org")))
-
-(map! :leader
-      :desc "Open terminal in other window"
-      "t o" #'my/vterm-here
-      )
 
 
 (map! :leader
@@ -337,3 +321,6 @@ SCHEDULED: %^T
 (use-package! direnv
   :config
   (direnv-mode))
+
+(after! projectile
+  (setq projectile-project-search-path '("~/Projects")))

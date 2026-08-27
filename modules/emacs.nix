@@ -23,7 +23,7 @@
       gcc
       coreutils
       emacsPackages.pdf-view-restore
-      emacsPackages.vterm
+      emacsPackages.ghostel
       emacsPackages.org-fragtog
       emacsPackages.emacs-everywhere
       emacsPackages.org-roam

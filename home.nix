@@ -116,6 +116,7 @@ home.file.".config/net.imput.helium/NativeMessagingHosts/org.keepassxc.keepassxc
     btop
     inputs.astroimagej.packages.${pkgs.system}.astroimagej
     inputs.helium.packages.${pkgs.system}.default
+    librewolf-bin
     rquickshare
     scrcpy
     android-tools

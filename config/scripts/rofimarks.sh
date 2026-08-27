@@ -5,7 +5,7 @@ BOOKMARKS="$HOME/org/bookmarks.org"
 # Tag -> command mapping
 declare -A OPENERS=(
     [school]="helium"
-    [misc]="zen"
+    [misc]="librewolf"
     [yt]="mpv"
     [video]="mpv"
     [astronomy]="zen"
