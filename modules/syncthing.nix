@@ -9,6 +9,7 @@ in
     user = "${user}";
     dataDir = "/home/${user}";
     configDir = "/home/${user}/.config/syncthing";
+    guiAddress = "0.0.0.0:8384";
   };
 
  environment.systemPackages = with pkgs.emacsPackages; [
