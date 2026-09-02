@@ -3,7 +3,7 @@ let
   symlink = path: config.lib.file.mkOutOfStoreSymlink path;
   dotfiles = "${config.home.homeDirectory}/nixos-dots/config";
   configs = {
-    nvim = "nvim";
+    # nvim = "nvim";
     # niri = "niri";
     hypr = "hypr";
     i3 = "i3";
@@ -69,9 +69,13 @@ in
             define() {
                      curl dict://dict.org/d:"$1"
             }
+            download-song() {
+              yt-dlp -f bestaudio -x --embed-metadata --embed-thumbnail --audio-format mp3 "$1"
+            }
             fastfetch -c ~/.config/fastfetch/config13.jsonc
 	    nitch
 	    export PATH="$HOME/.config/emacs/bin:$PATH"
+      export MANPAGER='nvim +Man!'
     '';
 
   };
@@ -130,4 +134,5 @@ home.file.".config/net.imput.helium/NativeMessagingHosts/org.keepassxc.keepassxc
       text = builtins.readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
     })
   ];
+
 }

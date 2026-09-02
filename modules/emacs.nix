@@ -1,14 +1,17 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
+let
+  unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
+in
 {
    services.emacs = {
       enable = true;
-      package = pkgs.emacs30;
+      package = unstable.emacs31;
       defaultEditor = true;
    };
 
    programs.emacs = {
       enable = true;
-      package = pkgs.emacs30;
+      package = unstable.emacs31;
    };
 
 
@@ -22,13 +25,13 @@
       sqlite
       gcc
       coreutils
-      emacsPackages.pdf-view-restore
-      emacsPackages.ghostel
-      emacsPackages.org-fragtog
-      emacsPackages.emacs-everywhere
-      emacsPackages.org-roam
-      emacsPackages.org-roam-ui
-      emacsPackages.mu4e
+      unstable.emacsPackages.pdf-view-restore
+      unstable.emacsPackages.ghostel
+      unstable.emacsPackages.org-fragtog
+      unstable.emacsPackages.emacs-everywhere
+      unstable.emacsPackages.org-roam
+      unstable.emacsPackages.org-roam-ui
+      unstable.emacsPackages.mu4e
       mu
       isync
       ydotool

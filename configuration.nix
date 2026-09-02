@@ -71,6 +71,7 @@
   services.power-profiles-daemon.enable = true;
   services.udisks2.enable = true;
 
+  programs.firejail.enable = true;
 
   # Enable CUPS to print documents.
   services.avahi = {
@@ -151,6 +152,7 @@
     nixd
     git
     ntfs3g
+    tldr
     wget
     kitty
     bluez

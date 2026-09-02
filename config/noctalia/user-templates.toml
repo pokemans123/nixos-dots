@@ -5,3 +5,12 @@
 [theme.templates.user.rofi]
 input_path = "$XDG_CONFIG_HOME/noctalia/templates/rofi.rasi"
 output_path = "$XDG_CONFIG_HOME/rofi/themes/noctalia.rasi"
+
+[theme.templates.user.stylus]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/stylus.user.css"
+output_path = "$XDG_CONFIG_HOME/stylus/noctalia.user.css"
+
+[theme.templates.user.nvim-base16]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/matugen-template.lua"
+output_path = "$XDG_CONFIG_HOME/nvim/lua/matugen.lua"
+post_hook = 'pkill -SIGUSR1 nvim'

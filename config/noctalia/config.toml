@@ -11,7 +11,7 @@ order = [ "island", "dock", "minimal" ]
     auto_hide = true
     background_opacity = 0.68999998457729816
     center = [ "wallpaper", "Projects", "configure_system", "zen", "btn" ]
-    enabled = true
+    enabled = false
     end = [ "clipboard" ]
     font_family = "JetBrainsMono NF"
     font_weight = 800
@@ -45,26 +45,6 @@ order = [ "island", "dock", "minimal" ]
         [bar.island.dead_zone.actions]
         right = "exec noctalia msg panel-toggle control-center audio"
 
-    [bar.minimal]
-    center = [ "control-center", "workspaces", "battery", "clock" ]
-    concave_edge_corners = false
-    enabled = false
-    end = [ "group:g1", "network", "volume", "session" ]
-    font_family = "Red Hat Display"
-    margin_ends = 0
-    radius = 0
-    scale = 1.300000011920929
-    start = []
-
-        [[bar.minimal.capsule_group]]
-        accordion = false
-        accordion_direction = "end"
-        enabled = true
-        fill = "primary"
-        id = "g1"
-        members = [ "tray", "notifications", "clipboard" ]
-        opacity = 0.25
-        padding = 6.0
 
 [calendar]
 enabled = true
@@ -403,6 +383,12 @@ time_format = "{:%-I:%M %p}"
     glyph = "terminal"
     exec = "~/nixos-dots/config/scripts/rofimarks.sh"
 
+    [shell.launcher.dmenu.entry.search]
+    prefix="/xng"
+    label="Search with SearXNG(opens in default browser)"
+    global=false
+    freeform = true
+    exec="librewolf https://search.qazniak-dell/search?q={query}"
 
 
 
@@ -411,7 +397,7 @@ time_format = "{:%-I:%M %p}"
     transparency_mode = "glass"
 
     [shell.screen_corners]
-    enabled = true
+    enabled = false
 
     [[shell.session.actions]]
     action = "lock"

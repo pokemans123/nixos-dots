@@ -324,3 +324,13 @@ SCHEDULED: %^T
 
 (after! projectile
   (setq projectile-project-search-path '("~/Projects")))
+
+(defun my/make-file-executable ()
+  (interactive)
+  (set-file-modes buffer-file-name
+                  (logior (file-modes buffer-file-name) #o111))
+  (message "Made %s executable" buffer-file-name))
+
+(map! :leader
+      :desc "Make file executable"
+      "m x" #'my/make-file-executable)

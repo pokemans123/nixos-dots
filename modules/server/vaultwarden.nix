@@ -3,7 +3,7 @@
 {
   services.vaultwarden = {
     enable = true;
-    backupDir = "/var/local/vaultwarden/backup";
+    backupDir = "/home/manager/passwords";
 
     environmentFile = "/var/lib/vaultwarden/vaultwarden.env";
 

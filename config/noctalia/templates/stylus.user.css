@@ -1,0 +1,75 @@
+/* ==UserStyle==
+@name           Noctalia Global
+@namespace      noctalia
+@version        1.0.0
+@description    Global Noctalia color variables
+==/UserStyle== */
+
+:root {
+<* for name, value in colors *>
+    --noctalia-{{name | kebab_case}}: {{value.default.hex}};
+<* endfor *>
+
+color-scheme: dark;
+}
+
+/* Main page */
+html {
+    background: var(--noctalia-background) !important;
+}
+
+body {
+    background-color: var(--noctalia-background) !important;
+    color: var(--noctalia-on-background) !important;
+}
+
+/* Common application roots */
+body > #root,
+body > #app,
+body > #__next,
+body > #root > div,
+[role="application"] {
+    background-color: var(--noctalia-background) !important;
+    color: var(--noctalia-on-background) !important;
+}
+
+/* Common surfaces */
+header,
+nav,
+aside,
+footer {
+    background-color: var(--noctalia-surface-container) !important;
+    color: var(--noctalia-on-surface) !important;
+}
+
+/* Inputs */
+input,
+textarea,
+select {
+    background-color: var(--noctalia-surface-container) !important;
+    color: var(--noctalia-on-surface) !important;
+    border-color: var(--noctalia-outline) !important;
+}
+
+/* Links */
+a {
+    color: var(--noctalia-primary) !important;
+}
+
+/* Borders */
+hr {
+    border-color: var(--noctalia-outline) !important;
+}
+
+/* Selection */
+::selection {
+    background-color: var(--noctalia-primary) !important;
+    color: var(--noctalia-on-primary) !important;
+}
+
+/* Scrollbars */
+* {
+    scrollbar-color:
+        var(--noctalia-outline)
+        var(--noctalia-surface) !important;
+}
